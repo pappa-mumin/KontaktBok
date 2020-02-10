@@ -24,13 +24,12 @@ class KontaktBokTest {
 	@BeforeEach
 	void PersonerIArrayen() {
 		testPerson = new Person("Förnamn","Efternamn", "Telefonnummer", "Melj");
-		KontaktLista.add(testPerson);
+		konBok.getKontaktLista().add(testPerson);
 	}
 	
 	@Test
 	void visaTest() {
-		
-		KontaktLista.visa();
+		konBok.visa(0);
 	}
 
 }
