@@ -6,11 +6,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 public class Ui {
 
@@ -18,11 +22,13 @@ public class Ui {
 	private JLabel headerLabel;
 	private JLabel statusLabel;
 	private JPanel controlPanel;
+	KontaktBok kBok = new KontaktBok();
+	private ArrayList<Person> KontaktLista;
 	
 	public void skapaUI() {
 		
 		forstaFrame = new JFrame("Kontaktbok");
-		forstaFrame.setSize(400, 400);
+		forstaFrame.setSize(400, 600);
 		forstaFrame.setLayout(new GridLayout(3, 1));
 		
 		headerLabel = new JLabel(" ", JLabel.CENTER);
@@ -69,6 +75,50 @@ public class Ui {
 		forstaFrame.setVisible(true);
 	}
 	
+	public void visaLista() {
+		ArrayList<String> cars = new ArrayList<String>();
+	    cars.add("Volvo                fndjkshfdsiua");
+	    cars.add("BMW");
+	    cars.add("Ford");
+	    cars.add("Mazda");
+	    cars.add("Volvo");
+	    cars.add("BMW");
+	    cars.add("Ford");
+	    cars.add("Mazda");
+	    cars.add("Volvo");
+	    cars.add("BMW");
+	    cars.add("Ford");
+	    cars.add("Mazda");
+	    cars.add("Volvo");
+	    cars.add("BMW");
+	    cars.add("Ford");
+	    cars.add("Mazda");
+		JList<String> list = new JList(cars.toArray());
+		list.setLayoutOrientation(JList.VERTICAL);
+		JScrollPane scrollPane = new JScrollPane(list);
+		controlPanel.add(scrollPane);      
+		
+	}
+	
+	public void sokning() {
+	    JComboBox<String> comboBox = new JComboBox<>();
+
+//	    String p1 = new String();
+//	    p1.setId(1);
+//	    p1.setNombre("ARGENTINA");
+//
+//	    String p2 = new String();
+//	    p2.setId(2);
+//	    p2.setNombre("BRASIL");
+
+
+	    comboBox.addItem("Förnamn");
+	    comboBox.addItem("Efternamn");
+	    comboBox.addItem("Telefonnummer");
+	    comboBox.addItem("Mejladress");
+	    controlPanel.add(comboBox);
+	}
+	
 	private class Knapptryck implements ActionListener {
 
 		@Override
@@ -77,14 +127,15 @@ public class Ui {
 			
 			if(command.contentEquals("Lista")) {
 				statusLabel.setText("Lista klickades");
+				visaLista();
 			}else if (command.contentEquals("Sök")) {
 				statusLabel.setText("Sök klickades");
+				sokning();
 			}else if (command.contentEquals("Lägg till")) {
 				statusLabel.setText("Lägg till klickades");
 			}else
 				statusLabel.setText("Ta bort klickades");
 			
 		}
-		
 	}
 }

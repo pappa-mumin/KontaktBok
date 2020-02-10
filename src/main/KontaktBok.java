@@ -9,7 +9,7 @@ public class KontaktBok {
 	
 		public String visa(int i) {
 			 Person ex = KontaktLista.get(i);
-			return ex.getFnamn() +" " + ex.getEnamn() + " : " + ex.getTel() + " : " + ex.getMejl();
+			return ex.getFnamn() +" "+ ex.getEnamn() +" "+ ex.getTel() +" "+ ex.getMejl();
 		}
 		
 		public Person taBort(int i) {
