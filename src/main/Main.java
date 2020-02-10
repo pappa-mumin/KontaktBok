@@ -6,6 +6,7 @@ public class Main {
 		
 		Ui ui = new Ui();
 		ui.skapaUI();
+		ui.knappar();
 	}
 
 }
