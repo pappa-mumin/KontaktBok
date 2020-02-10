@@ -29,7 +29,9 @@ class KontaktBokTest {
 	
 	@Test
 	void visaTest() {
+		String s = testPerson.getFnamn() +" "+ testPerson.getEnamn() +" "+ testPerson.getTel() +" "+ testPerson.getMejl();
 		konBok.visa(0);
+		assertEquals(konBok.visa(0), s);
 
 	}
 
