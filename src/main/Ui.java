@@ -9,6 +9,7 @@ import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -99,6 +100,25 @@ public class Ui {
 		
 	}
 	
+	public void sokning() {
+	    JComboBox<String> comboBox = new JComboBox<>();
+
+//	    String p1 = new String();
+//	    p1.setId(1);
+//	    p1.setNombre("ARGENTINA");
+//
+//	    String p2 = new String();
+//	    p2.setId(2);
+//	    p2.setNombre("BRASIL");
+
+
+	    comboBox.addItem("Förnamn");
+	    comboBox.addItem("Efternamn");
+	    comboBox.addItem("Telefonnummer");
+	    comboBox.addItem("Mejladress");
+	    controlPanel.add(comboBox);
+	}
+	
 	private class Knapptryck implements ActionListener {
 
 		@Override
@@ -110,6 +130,7 @@ public class Ui {
 				visaLista();
 			}else if (command.contentEquals("Sök")) {
 				statusLabel.setText("Sök klickades");
+				sokning();
 			}else if (command.contentEquals("Lägg till")) {
 				statusLabel.setText("Lägg till klickades");
 			}else
