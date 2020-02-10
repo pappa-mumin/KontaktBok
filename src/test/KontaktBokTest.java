@@ -30,7 +30,7 @@ class KontaktBokTest {
 	@Test
 	void visaTest() {
 		
-		KontaktLista.visa();
+		KontaktLista.visa(5);
 	}
 
 }

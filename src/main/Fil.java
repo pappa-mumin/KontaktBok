@@ -5,7 +5,7 @@ import java.io.File;
 public class Fil {
 	
 	private String filNamn = "Kontaktbok/src/main/Kontaktlista.txt";
-	private File fil = new File(filNamn);
+	private File fil;
 	
 	
 	/**
@@ -24,5 +24,23 @@ public class Fil {
 	public String getFilNamn() {
 		return filNamn;
 	}
+	
+	public void setFilNamn(String filNamn) {
+		this.filNamn = filNamn;
+	}
+	
+	public File getFil() {
+		return fil;
+	}
 
+
+	/**
+	 * skapaFil() skapar en ny fil.
+	 * @author Louise
+	 */
+	public void skapaFil(String filNamn) {
+		this.filNamn = filNamn;
+		fil = new File(filNamn);
+	}
+	
 }
