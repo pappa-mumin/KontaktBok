@@ -4,7 +4,8 @@ import java.io.File;
 
 public class Fil {
 	
-	private File fil = new File("Kontaktbok/src/main/Kontaktlista.txt");
+	private String filNamn = "Kontaktbok/src/main/Kontaktlista.txt";
+	private File fil = new File(filNamn);
 	
 	
 	/**
@@ -12,10 +13,16 @@ public class Fil {
 	 * @return true om filen redan är skapad, false om filen inte finns
 	 * @author Louise
 	 */
-	boolean finnsFilen() {
-		File x = new File("Kontaktbok/src/main/Kontaktlista.txt");
+	boolean finnsFilen(String filNamn) {
+		this.filNamn = filNamn;
+		File x = new File(filNamn);
 		boolean finns = x.exists();
 		return finns;
+	}
+
+
+	public String getFilNamn() {
+		return filNamn;
 	}
 
 }
