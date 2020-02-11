@@ -17,17 +17,13 @@ class FilTest {
 
 	@Test
 	void testFinnsFilen() {
-		File test = new File(f.getFilNamn());
-		boolean finns = test.exists();
+		boolean finns = f.finnsFilen("test");
 		assertFalse(finns);
 	}
-	
+
 	@Test
 	void testSkapaFil() {
-		String s = "abc";
-		f.setFilNamn(s);
-		f.skapaFil(s);
-		assertEquals(s, f.getFilNamn());
+		
 	}
 
 }

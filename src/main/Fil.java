@@ -7,8 +7,7 @@ import java.io.PrintStream;
 
 public class Fil {
 	
-	private String filNamn = "Kontaktbok/src/main/Kontaktlista.txt";
-	private File fil;
+	private String filNamn = "KontaktLista.txt";
 	String text = "Hadabladablada";
 	
 	
@@ -17,7 +16,7 @@ public class Fil {
 	 * @return true om filen redan är skapad, false om filen inte finns
 	 * @author Louise
 	 */
-	boolean finnsFilen(String filNamn) {
+	public boolean finnsFilen(String filNamn) {
 		this.filNamn = filNamn;
 		File x = new File(filNamn);
 		boolean finns = x.exists();
@@ -32,22 +31,14 @@ public class Fil {
 	public void setFilNamn(String filNamn) {
 		this.filNamn = filNamn;
 	}
-	
-	public File getFil() {
-		return fil;
-	}
 
 
 	/**
-	 * skapaFil() skapar en ny fil.
+	 * skapaFil() skapar en ny fil och skriver in kontakter i listan.
 	 * @author Louise
 	 */
 	public void skapaFil(String filNamn) {
 		this.filNamn = filNamn;
-		fil = new File(filNamn);
-	}
-	
-	void skrivTillFil() {
 		try (PrintStream out = new PrintStream(new FileOutputStream(filNamn))){	
 		out.print(text);
 		} catch (FileNotFoundException e) {
