@@ -41,7 +41,7 @@ class KontaktBokTest {
 	}
 	
 	@Test
-	void läggTill() {
+	void läggTillTest() {
 		Person testPerson1 = new Person("This", "Is", "A", "testPerson");
 		konBok.getKontaktLista().add(testPerson1);
 		assertEquals(konBok.getKontaktLista().get(1), testPerson1);
