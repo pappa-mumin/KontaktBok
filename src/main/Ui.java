@@ -27,7 +27,7 @@ public class Ui {
 	KontaktBok kBok = new KontaktBok();
 	private ArrayList<Person> KontaktLista;
 	
-    private String fn, en, tel, mejl;
+    public String fn, en, tel, mejl;
 	
 	public void skapaUI() {
 		
@@ -35,9 +35,10 @@ public class Ui {
 		forstaFrame.setSize(800, 600);
 		forstaFrame.setLayout(new GridLayout(5, 1));
 		
-		headerLabel = new JLabel(" ", JLabel.CENTER);
-		statusLabel = new JLabel(" ", JLabel.CENTER);
-		statusLabel.setSize(50, 50);
+		headerLabel = new JLabel("Hej Head", JLabel.CENTER);
+		headerLabel.setSize(50,50);
+//		statusLabel = new JLabel("Hek status", JLabel.CENTER);
+//		statusLabel.setSize(10, 10);
 		
 		forstaFrame.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent windowEvent) {
@@ -46,11 +47,13 @@ public class Ui {
 		});
 		
 		controlPanel = new JPanel();
-		controlPanel.setLayout(new FlowLayout());
+		controlPanel.setSize(800, 300);
+//		controlPanel.setLayout(new FlowLayout());
 		
 		forstaFrame.add(headerLabel);
 		forstaFrame.add(controlPanel);
-		forstaFrame.add(statusLabel);
+//		forstaFrame.add(statusLabel);
+
 		forstaFrame.setVisible(true);
 	}
 	
@@ -80,6 +83,7 @@ public class Ui {
 	}
 	
 	public void visaLista() {
+		
 		ArrayList<String> cars = new ArrayList<String>();
 	    cars.add("Volvo                fndjkshfdsiua");
 	    cars.add("BMW");
@@ -122,18 +126,18 @@ public class Ui {
 		panel.setLayout(gl);
 	    
 		JLabel fornamnLabel = new JLabel("Förnamn: ");
-		JTextArea fornamnInput = new JTextArea(1, 5);
+		JTextField fornamnInput = new JTextField(20);
 		JLabel efternamnLabel = new JLabel("Efternamn: ");
-		JTextArea efternamnInput = new JTextArea(1, 1);
+		JTextField efternamnInput = new JTextField(20);
 	    JLabel telLabel = new JLabel("Telefonnummer: ");
-	    JTextArea telInput = new JTextArea(1, 1);		    
+	    JTextField telInput = new JTextField(20);		    
 	    JLabel mejlLabel = new JLabel("Mejladress: ");
-	    JTextArea mejlInput = new JTextArea(1, 1);
+	    JTextField mejlInput = new JTextField(20);
 
-	    String fn = fornamnInput.getText();		   
-	    String en = efternamnInput.getText();
-	    String tel = telInput.getText();
-	    String mejl = mejlInput.getText();		    
+	    fn = fornamnInput.getText();		   
+	    en = efternamnInput.getText();
+	    tel = telInput.getText();
+	    mejl = mejlInput.getText();		    
 	    
 	    fornamnInput.setText("");
 		efternamnInput.setText("");
@@ -160,17 +164,25 @@ public class Ui {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			String command = e.getActionCommand();
+//		    JPanel panelo = new JPanel();
+//		    
+//			GridLayout glo = new GridLayout(3,1); // 4 rows, 2 columns
+//			panelo.setLayout(glo);
 			
 			if(command.contentEquals("Lista")) {
-				statusLabel.setText("Lista klickades");
+				headerLabel.setText("Här är Kontaktboken");
+//				statusLabel.setText("Lista klickades");
 				visaLista();
 			}else if (command.contentEquals("Sök")) {
-				statusLabel.setText("Sök klickades");
+				headerLabel.setText("Sök i Kontaktboken");
+//				statusLabel.setText("Sök klickades");
 				sokning();
 			}else if (command.contentEquals("Lägg till")) {
-				statusLabel.setText("Lägg till klickades");
+				headerLabel.setText("Lägg till kontakt i Kontaktboken");
+//				statusLabel.setText("Lägg till klickades");
 			}else
-				statusLabel.setText("Ta bort klickades");
+				headerLabel.setText("Radera kontakt i Kontaktboken");
+//				statusLabel.setText("Ta bort klickades");
 			
 		}
 	}
