@@ -1,11 +1,15 @@
 package main;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.PrintStream;
 
 public class Fil {
 	
 	private String filNamn = "Kontaktbok/src/main/Kontaktlista.txt";
 	private File fil;
+	String text = "Hadabladablada";
 	
 	
 	/**
@@ -41,6 +45,14 @@ public class Fil {
 	public void skapaFil(String filNamn) {
 		this.filNamn = filNamn;
 		fil = new File(filNamn);
+	}
+	
+	void skrivTillFil() {
+		try (PrintStream out = new PrintStream(new FileOutputStream(filNamn))){	
+		out.print(text);
+		} catch (FileNotFoundException e) {
+		e.printStackTrace();
+		}
 	}
 	
 }
