@@ -1,6 +1,7 @@
 package test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
 
@@ -30,9 +31,21 @@ class KontaktBokTest {
 	@Test
 	void visaTest() {
 		String s = testPerson.getFnamn() +" "+ testPerson.getEnamn() +" "+ testPerson.getTel() +" "+ testPerson.getMejl();
-		konBok.visa(0);
 		assertEquals(konBok.visa(0), s);
-
 	}
+	
+	@Test
+	void taBortTest() {
+		konBok.taBort(0);
+		assertTrue(KontaktLista.isEmpty());
+	}
+	
+	@Test
+	void läggTill() {
+		Person testPerson1 = new Person("This", "Is", "A", "testPerson");
+		konBok.getKontaktLista().add(testPerson1);
+		assertEquals(konBok.getKontaktLista().get(1), testPerson1);
+	}
+	
 
 }
