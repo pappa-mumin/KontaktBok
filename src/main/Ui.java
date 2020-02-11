@@ -15,6 +15,8 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 public class Ui {
 
@@ -25,15 +27,17 @@ public class Ui {
 	KontaktBok kBok = new KontaktBok();
 	private ArrayList<Person> KontaktLista;
 	
+    private String fn, en, tel, mejl;
+	
 	public void skapaUI() {
 		
 		forstaFrame = new JFrame("Kontaktbok");
-		forstaFrame.setSize(400, 600);
-		forstaFrame.setLayout(new GridLayout(3, 1));
+		forstaFrame.setSize(800, 600);
+		forstaFrame.setLayout(new GridLayout(5, 1));
 		
 		headerLabel = new JLabel(" ", JLabel.CENTER);
 		statusLabel = new JLabel(" ", JLabel.CENTER);
-		statusLabel.setSize(350, 100);
+		statusLabel.setSize(50, 50);
 		
 		forstaFrame.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent windowEvent) {
@@ -101,22 +105,54 @@ public class Ui {
 	}
 	
 	public void sokning() {
-	    JComboBox<String> comboBox = new JComboBox<>();
-
-//	    String p1 = new String();
-//	    p1.setId(1);
-//	    p1.setNombre("ARGENTINA");
-//
-//	    String p2 = new String();
-//	    p2.setId(2);
-//	    p2.setNombre("BRASIL");
+//	    JComboBox<String> comboBox = new JComboBox<>();
+//	    comboBox.addItem("Förnamn");
+//	    comboBox.addItem("Efternamn");
+//	    comboBox.addItem("Telefonnummer");
+//	    comboBox.addItem("Mejladress");
+//	    controlPanel.add(comboBox);
+		
 
 
-	    comboBox.addItem("Förnamn");
-	    comboBox.addItem("Efternamn");
-	    comboBox.addItem("Telefonnummer");
-	    comboBox.addItem("Mejladress");
-	    controlPanel.add(comboBox);
+		JButton sokKnapp = new JButton("Sök");
+		
+	    JPanel panel = new JPanel();
+	    
+		GridLayout gl = new GridLayout(8,1); // 4 rows, 2 columns
+		panel.setLayout(gl);
+	    
+		JLabel fornamnLabel = new JLabel("Förnamn: ");
+		JTextArea fornamnInput = new JTextArea(1, 5);
+		JLabel efternamnLabel = new JLabel("Efternamn: ");
+		JTextArea efternamnInput = new JTextArea(1, 1);
+	    JLabel telLabel = new JLabel("Telefonnummer: ");
+	    JTextArea telInput = new JTextArea(1, 1);		    
+	    JLabel mejlLabel = new JLabel("Mejladress: ");
+	    JTextArea mejlInput = new JTextArea(1, 1);
+
+	    String fn = fornamnInput.getText();		   
+	    String en = efternamnInput.getText();
+	    String tel = telInput.getText();
+	    String mejl = mejlInput.getText();		    
+	    
+	    fornamnInput.setText("");
+		efternamnInput.setText("");
+	    telInput.setText("");
+	    mejlInput.setText("");
+		    		    
+	    panel.add(fornamnLabel);
+		panel.add(fornamnInput);
+	    panel.add(efternamnLabel);
+	    panel.add(efternamnInput);
+	    panel.add(telLabel);
+	    panel.add(telInput);
+	    panel.add(mejlLabel);
+	    panel.add(mejlInput);
+	    panel.add(sokKnapp);
+
+	    controlPanel.add(panel);
+
+		
 	}
 	
 	private class Knapptryck implements ActionListener {
