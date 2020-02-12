@@ -8,8 +8,16 @@ import java.io.PrintStream;
 public class Fil {
 	
 	private String filNamn = "KontaktLista.txt";
-	String text = "Hadabladablada";
+	String text = "";
 	
+	
+	public String getFilNamn() {
+		return filNamn;
+	}
+	
+	public void setFilNamn(String filNamn) {
+		this.filNamn = filNamn;
+	}
 	
 	/**
 	 * finnsFilen() testar om filen Kontaktlista.txt finns eller inte
@@ -21,15 +29,6 @@ public class Fil {
 		File x = new File(filNamn);
 		boolean finns = x.exists();
 		return finns;
-	}
-
-
-	public String getFilNamn() {
-		return filNamn;
-	}
-	
-	public void setFilNamn(String filNamn) {
-		this.filNamn = filNamn;
 	}
 
 
@@ -45,5 +44,7 @@ public class Fil {
 		e.printStackTrace();
 		}
 	}
+	
+	
 	
 }
