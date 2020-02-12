@@ -1,0 +1,3 @@
+Louise	Awesome	louise@awesome.com	1234545
+Linn	Fabulous	linn@fabulous.se	2345566
+Oscar	BadAss	oscar@badass.org	2457757
