@@ -6,15 +6,17 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class LäggTillKontakt {
+	Fil fil = new Fil();
+	
 	static Scanner s, rubriker;
 	static String[] radhållare;
 	Person pers;
 	ArrayList<Person> lista = new ArrayList<Person>();
 
 	
-	public void jagVetteFanAsså() {
+	public ArrayList<Person> FilTillLista() {
 	try {
-		s = new Scanner( new File("src/main/KontaktLista.txt"));
+		s = new Scanner( new File("src/main/"+fil.getFilNamn()));
 	} catch(FileNotFoundException e) {
 		e.printStackTrace();
 	}
@@ -30,5 +32,6 @@ public class LäggTillKontakt {
 			pers = new Person(fnamn, enamn, tel, mejl);
 			lista.add(pers);	
 		}	
+		return lista;
 	}
 }
