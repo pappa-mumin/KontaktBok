@@ -26,5 +26,4 @@ public class Main {
 		fil.skapaFil(x);
 
 	}
-
 }

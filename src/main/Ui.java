@@ -21,6 +21,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 
 public class Ui implements ItemListener{
 	
+	final static String FORSTPANEL = "---VÄLJ FUNKTION---";
     final static String LISTAPANEL = "Visa Lista";
     final static String SOKPANEL = "Sök i lista";
     final static String LAGGTILLPANEL = "Lägg till kontakt";
@@ -32,13 +33,15 @@ public class Ui implements ItemListener{
 	
     public void addComponentToPane(Container pane) {
         JPanel comboBoxPane = new JPanel(); 
-        String comboBoxItems[] = { LISTAPANEL, SOKPANEL, LAGGTILLPANEL, TABORTPANEL};
+        String comboBoxItems[] = { FORSTPANEL, LISTAPANEL, SOKPANEL, LAGGTILLPANEL, TABORTPANEL};
         JComboBox cb = new JComboBox(comboBoxItems);
         cb.setEditable(false);
         cb.addItemListener(this);
         comboBoxPane.add(cb);
 
         //Create the "cards".
+        JPanel card0 = new JPanel();
+        
         JPanel card1 = new JPanel();
         card1.add(visaLista());
          
@@ -53,6 +56,7 @@ public class Ui implements ItemListener{
          
         //Create the panel that contains the "cards".
         cards = new JPanel(new CardLayout());
+        cards.add(card0, FORSTPANEL);
         cards.add(card1, LISTAPANEL);
         cards.add(card2, SOKPANEL);
         cards.add(card3, LAGGTILLPANEL);
