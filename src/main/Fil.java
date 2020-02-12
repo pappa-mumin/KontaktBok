@@ -8,7 +8,7 @@ import java.io.PrintStream;
 public class Fil {
 	
 	private String filNamn = "KontaktLista.txt";
-	String text = "";
+	StringBuilder text;
 	
 	
 	public String getFilNamn() {
@@ -31,18 +31,26 @@ public class Fil {
 		return finns;
 	}
 
-
 	/**
 	 * skapaFil() skapar en ny fil och skriver in kontakter i listan.
 	 * @author Louise
 	 */
-	public void skapaFil(String filNamn) {
-		this.filNamn = filNamn;
+	public void skapaFil(StringBuilder text) {
+//		this.filNamn = filNamn;
+		this.text = text;
 		try (PrintStream out = new PrintStream(new FileOutputStream(filNamn))){	
 		out.print(text);
 		} catch (FileNotFoundException e) {
 		e.printStackTrace();
 		}
+	}
+
+	public StringBuilder getText() {
+		return text;
+	}
+
+	public void setText(StringBuilder text) {
+		this.text = text;
 	}
 	
 	

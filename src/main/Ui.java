@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Container;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.ArrayList;
@@ -19,9 +21,10 @@ import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
+
 public class Ui implements ItemListener{
 	
-	final static String FORSTPANEL = "---VÄLJ FUNKTION---";
+	final static String FORSTPANEL = "---Vad vill du göra?---";
     final static String LISTAPANEL = "Visa Lista";
     final static String SOKPANEL = "Sök i lista";
     final static String LAGGTILLPANEL = "Lägg till kontakt";
@@ -30,6 +33,7 @@ public class Ui implements ItemListener{
     public JScrollPane scrollPane;
     public JPanel card, card1, card2, card3, card4, sokPanel, laggTillPanel, taBortPanel;
     public String fn, en, tel, mejl;
+    private JLabel statusLabel;
 	
     public void addComponentToPane(Container pane) {
         JPanel comboBoxPane = new JPanel(); 
@@ -38,6 +42,10 @@ public class Ui implements ItemListener{
         cb.setEditable(false);
         cb.addItemListener(this);
         comboBoxPane.add(cb);
+        
+		statusLabel = new JLabel(" ");
+		statusLabel.setSize(350, 100);
+
 
         //Create the "cards".
         JPanel card0 = new JPanel();
@@ -64,6 +72,8 @@ public class Ui implements ItemListener{
         
         pane.add(comboBoxPane, BorderLayout.PAGE_START);
         pane.add(cards, BorderLayout.CENTER);
+        pane.add(statusLabel, BorderLayout.PAGE_END);
+        
 	}
     
     public JScrollPane visaLista() {
@@ -114,6 +124,9 @@ public class Ui implements ItemListener{
 		efternamnInput.setText("");
 	    telInput.setText("");
 	    mejlInput.setText("");
+	    
+		sokKnapp.setActionCommand("Sök");
+		sokKnapp.addActionListener(new Knapptryck());
 		
 	    sokPanel.add(fornamnLabel);
 	    sokPanel.add(fornamnInput);
@@ -131,7 +144,7 @@ public class Ui implements ItemListener{
     	laggTillPanel = new JPanel();
     	GridLayout gl = new GridLayout(5,1); 
     	laggTillPanel.setLayout(gl);
-    	JButton sokKnapp = new JButton("Lägg till");
+    	JButton laggTillKnapp = new JButton("Lägg till");
 	    
 		JLabel fornamnLabel = new JLabel("Förnamn: ");
 		JTextField fornamnInput = new JTextField(30);
@@ -151,6 +164,9 @@ public class Ui implements ItemListener{
 		efternamnInput.setText("");
 	    telInput.setText("");
 	    mejlInput.setText("");
+	    
+	    laggTillKnapp.setActionCommand("Lägg till");
+	    laggTillKnapp.addActionListener(new Knapptryck());
 		
 	    laggTillPanel.add(fornamnLabel);
 	    laggTillPanel.add(fornamnInput);
@@ -160,7 +176,7 @@ public class Ui implements ItemListener{
 	    laggTillPanel.add(telInput);
 	    laggTillPanel.add(mejlLabel);
 	    laggTillPanel.add(mejlInput);
-	    laggTillPanel.add(sokKnapp);
+	    laggTillPanel.add(laggTillKnapp);
 
     	return laggTillPanel;
     }
@@ -168,7 +184,7 @@ public class Ui implements ItemListener{
     	taBortPanel = new JPanel();
     	GridLayout gl = new GridLayout(5,1); 
     	taBortPanel.setLayout(gl);
-    	JButton sokKnapp = new JButton("Ta bort");
+    	JButton taBortKnapp = new JButton("Ta bort");
 	    
 		JLabel fornamnLabel = new JLabel("Förnamn: ");
 		JTextField fornamnInput = new JTextField(30);
@@ -188,6 +204,9 @@ public class Ui implements ItemListener{
 		efternamnInput.setText("");
 	    telInput.setText("");
 	    mejlInput.setText("");
+	    
+	    taBortKnapp.setActionCommand("Lägg till");
+	    taBortKnapp.addActionListener(new Knapptryck());
 		
 	    taBortPanel.add(fornamnLabel);
 	    taBortPanel.add(fornamnInput);
@@ -197,7 +216,7 @@ public class Ui implements ItemListener{
 	    taBortPanel.add(telInput);
 	    taBortPanel.add(mejlLabel);
 	    taBortPanel.add(mejlInput);
-	    taBortPanel.add(sokKnapp);
+	    taBortPanel.add(taBortKnapp);
 
     	return taBortPanel;
     }
@@ -214,7 +233,7 @@ public class Ui implements ItemListener{
      */
     private static void createAndShowGUI() {
         //Create and set up the window.
-        JFrame frame = new JFrame("Kontaktbok");
+        JFrame frame = new JFrame("KONTAKTBOK");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
          
         //Create and set up the content pane.
@@ -249,7 +268,23 @@ public class Ui implements ItemListener{
             public void run() {
                 createAndShowGUI();
             }
-        });
+        });  
     }
+	private class Knapptryck implements ActionListener {
+		
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			String command = e.getActionCommand();
+			
+			if(command.contentEquals("Sök")) {
+				statusLabel.setText("Sökning gjord");	
+			}else if (command.contentEquals("Lägg till")) {
+				statusLabel.setText("Kontakt har lagts till");	
+//			}else if (command.contentEquals("Ta bort")) {
+//				statusLabel.setText("Kontakt har hittats och tagits bort");	
+			}else
+				statusLabel.setText("Inget har klickats");	
+		}
+	}
 
 }
