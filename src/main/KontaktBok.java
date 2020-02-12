@@ -3,8 +3,8 @@ package main;
 import java.util.ArrayList;
 
 public class KontaktBok {
-		
-		ArrayList<Person> KontaktLista = new ArrayList<Person>();
+		LäggTillKontakt ltk = new LäggTillKontakt();
+		ArrayList<Person> KontaktLista = ltk.FilTillLista();
 		
 	
 		public String visa(int i) {

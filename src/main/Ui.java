@@ -22,7 +22,6 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
 
-
 public class Ui implements ItemListener{
 	
 	final static String FORSTPANEL = "---Vad vill du göra?---";
