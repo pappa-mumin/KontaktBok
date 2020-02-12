@@ -4,8 +4,8 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-//		Ui ui = new Ui();
-//		ui.skapaUI();
+		Ui ui = new Ui();
+		ui.skapaUI();
 		
 		
 		KontaktBok kb = new KontaktBok();
