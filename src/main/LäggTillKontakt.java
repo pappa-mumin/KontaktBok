@@ -16,7 +16,7 @@ public class LäggTillKontakt {
 	
 	public ArrayList<Person> FilTillLista() {
 	try {
-		s = new Scanner( new File("src/main/KontaktLista.txt"));
+		s = new Scanner( new File("/KontaktLista.txt"));
 	} catch(FileNotFoundException e) {
 		e.printStackTrace();
 	}
