@@ -133,9 +133,8 @@ public class Ui implements ItemListener{
 	    		soktel = telInput.getText();
 	            sokmejl = mejlInput.getText();
 	            System.out.println("korv korv korv" + sokfn + soken + soktel + sokmejl);
-	            
-	            
-
+ 
+//	            Hej hopp! Vid sökning ges rätt kontakt i consolen men statuslabel ger alltid kontakten "Linn..."
 	            
 	            if(!sokfn.isEmpty()) {
 	            	statusLabel.setText(kb.visa(kb.sökEfterFörNamn(sokfn)));
@@ -148,7 +147,6 @@ public class Ui implements ItemListener{
 	            } else {
 	            	statusLabel.setText("LOSER - du har gjort FEL!");
 	            }
-	            
 	            
 	    	}
 	    });
