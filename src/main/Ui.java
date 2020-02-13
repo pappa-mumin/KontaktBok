@@ -32,9 +32,11 @@ public class Ui implements ItemListener{
     public static JPanel cards;
     public JScrollPane scrollPane;
     public JPanel card, card1, card2, card3, card4, sokPanel, laggTillPanel, taBortPanel;
-    public String fn, en, tel, mejl;
+    public String sokfn, soken, soktel, sokmejl;
+    public String laggfn, laggen, laggtel, laggmejl;
+    public String bortfn, borten, borttel, bortmejl;
     private JLabel statusLabel;
-    public JTextField fornamnInput, efternamnInput, telInput, mejlInput;;
+    public JTextField fornamnInput, efternamnInput, telInput, mejlInput;
 	
     public void addComponentToPane(Container pane) {
         JPanel comboBoxPane = new JPanel(); 
@@ -46,7 +48,6 @@ public class Ui implements ItemListener{
         
 		statusLabel = new JLabel(" ");
 		statusLabel.setSize(350, 100);
-
 
         //Create the "cards".
         JPanel card0 = new JPanel();
@@ -114,24 +115,24 @@ public class Ui implements ItemListener{
 	    JTextField telInput = new JTextField(30);		    
 	    JLabel mejlLabel = new JLabel("Mejladress: ");
 	    JTextField mejlInput = new JTextField(30);
-
-	    fornamnInput.setActionCommand("Förnamn");
-	    fornamnInput.addActionListener(new Textfyllnad());
 	    
-//	    fornamnInput.setText("");
+	    fornamnInput.setText("");
 		efternamnInput.setText("");
 	    telInput.setText("");
 	    mejlInput.setText("");
-	    
-	    
-	    
-//	    fn = fornamnInput.getText();		   
-	    en = efternamnInput.getText();
-	    tel = telInput.getText();
-	    mejl = mejlInput.getText();	
 
 		sokKnapp.setActionCommand("Sök");
-		sokKnapp.addActionListener(new Knapptryck());
+
+	    sokKnapp.addActionListener(new ActionListener() {
+	    	public void actionPerformed(ActionEvent e) {
+	    		sokfn = fornamnInput.getText();		   
+	    		soken = efternamnInput.getText();
+	    		soktel = telInput.getText();
+	            sokmejl = mejlInput.getText();
+	            System.out.println("korv korv korv" + sokfn + soken + soktel + sokmejl);
+	            statusLabel.setText("Sökning är gjord!");	
+	    	}
+	    });
 		
 	    sokPanel.add(fornamnLabel);
 	    sokPanel.add(fornamnInput);
@@ -161,20 +162,23 @@ public class Ui implements ItemListener{
 	    JLabel mejlLabel = new JLabel("Mejladress: ");
 	    JTextField mejlInput = new JTextField(30);
 	    
-	    
-	    
-	    fn = fornamnInput.getText();		   
-	    en = efternamnInput.getText();
-	    tel = telInput.getText();
-	    mejl = mejlInput.getText();		    
-	    
-	    fornamnInput.setText("Prutt");
+	    fornamnInput.setText("");
 		efternamnInput.setText("");
 	    telInput.setText("");
 	    mejlInput.setText("");
 
 	    laggTillKnapp.setActionCommand("Lägg till");
-	    laggTillKnapp.addActionListener(new Knapptryck());
+	    
+	    laggTillKnapp.addActionListener(new ActionListener() {
+	    	public void actionPerformed(ActionEvent e) {
+	    		laggfn = fornamnInput.getText();		   
+	    		laggen = efternamnInput.getText();
+	    		laggtel = telInput.getText();
+	            laggmejl = mejlInput.getText();
+	            System.out.println("korv korv korv" + laggfn + laggen + laggtel + laggmejl);
+	            statusLabel.setText("Kontakt har lagts till!");	
+	    	}
+	    });
 		
 	    laggTillPanel.add(fornamnLabel);
 	    laggTillPanel.add(fornamnInput);
@@ -202,20 +206,25 @@ public class Ui implements ItemListener{
 	    JLabel telLabel = new JLabel("Telefonnummer: ");
 	    JTextField telInput = new JTextField(30);		    
 	    JLabel mejlLabel = new JLabel("Mejladress: ");
-	    JTextField mejlInput = new JTextField(30);
-
-	    fn = fornamnInput.getText();		   
-	    en = efternamnInput.getText();
-	    tel = telInput.getText();
-	    mejl = mejlInput.getText();		    
+	    JTextField mejlInput = new JTextField(30);;		    
 	    
 	    fornamnInput.setText("");
 		efternamnInput.setText("");
 	    telInput.setText("");
 	    mejlInput.setText("");
 	    
-	    taBortKnapp.setActionCommand("Lägg till");
-	    taBortKnapp.addActionListener(new Knapptryck());
+	    taBortKnapp.setActionCommand("Ta bort");
+	    
+	    taBortKnapp.addActionListener(new ActionListener() {
+	    	public void actionPerformed(ActionEvent e) {
+	    		bortfn = fornamnInput.getText();		   
+	    		borten = efternamnInput.getText();
+	    		borttel = telInput.getText();
+	            bortmejl = mejlInput.getText();
+	            System.out.println("korv korv korv" + bortfn + borten + borttel + bortmejl);
+	            statusLabel.setText("Kontakt har hittats och tagits bort!");	
+	    	}
+	    });
 	    
 	    taBortPanel.add(fornamnLabel);
 	    taBortPanel.add(fornamnInput);
@@ -279,66 +288,4 @@ public class Ui implements ItemListener{
             }
         });  
     }
-	private class Knapptryck implements ActionListener {
-		
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			String command = e.getActionCommand();
-			
-//		    fn = fornamnInput.getText();		   
-//		    en = efternamnInput.getText();
-//		    tel = telInput.getText();
-//		    mejl = mejlInput.getText();	
-//		    
-//		    fornamnInput.setText("");
-//			efternamnInput.setText("");
-//		    telInput.setText("");
-//		    mejlInput.setText("");
-			
-			if(command.contentEquals("Sök")) {
-				
-//			    fornamnInput.setText("");
-//				efternamnInput.setText("");
-//			    telInput.setText("");
-//			    mejlInput.setText("");
-			    
-//			    fn = fornamnInput.getText();		   
-//			    en = efternamnInput.getText();
-//			    tel = telInput.getText();
-//			    mejl = mejlInput.getText();	
-				statusLabel.setText("Sökning gjord ");
-				System.out.println("hej sök " + fn + en + tel + mejl);
-			}else if (command.contentEquals("Lägg till")) {
-				statusLabel.setText("Kontakt har lagts till");	
-				System.out.println("hej lägg till " + fn + en + tel + mejl);
-			}else if (command.contentEquals("Ta bort")) {
-				statusLabel.setText("Kontakt har hittats och tagits bort");	
-				System.out.println("hej radera " + fn + en + tel + mejl);
-			}else {
-				statusLabel.setText("Inget har klickats");	
-				System.out.println("Noooo!");
-			}
-		}
-	}
-	private class Textfyllnad implements ActionListener {
-		
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			String command = e.getActionCommand();
-			
-			if(command.contentEquals("Förnamn")) {
-				fornamnInput.setText("");
-			    fn = fornamnInput.getText();
-			}else if (command.contentEquals("Efternamn")) {
-				en = efternamnInput.getText();
-			}else if (command.contentEquals("Tele")) {
-				tel = telInput.getText();
-			}else if (command.contentEquals("Mejl")) {
-				mejl = mejlInput.getText();	
-			}else {
-				System.out.println("Ej sparat!");
-			}
-		}
-
-	}
 }
