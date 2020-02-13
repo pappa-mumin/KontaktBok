@@ -132,18 +132,39 @@ public class Ui implements ItemListener{
 	    		soken = efternamnInput.getText();
 	    		soktel = telInput.getText();
 	            sokmejl = mejlInput.getText();
-	            System.out.println("korv korv korv" + sokfn + soken + soktel + sokmejl);
+	            System.out.println("korv korv korv " + sokfn + soken + soktel + sokmejl);
  
 //	            Hej hopp! Vid sökning ges rätt kontakt i consolen men statuslabel ger alltid kontakten "Linn..."
+	            String status = "";
+	            ArrayList<Person> statuslista = new ArrayList<Person>();
 	            
 	            if(!sokfn.isEmpty()) {
-	            	statusLabel.setText(kb.visa(kb.sökEfterFörNamn(sokfn)));
+	            	statuslista = kb.sökEfterFörNamn(sokfn);
+	            	for(Person p : statuslista) {
+	            		status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
+	            	}
+	            	statusLabel.setText(status);
+	            	
 	            } else if(!soken.isEmpty()) {
-	            	statusLabel.setText(kb.visa(kb.sökEfterEfterNamn(soken)));
+	            	statuslista = kb.sökEfterEfterNamn(soken);
+	            	for(Person p : statuslista) {
+	            		status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
+	            	}
+	            	statusLabel.setText(status);
+	            	
 	            } else if(!soktel.isEmpty()) {
-	            	statusLabel.setText(kb.visa(kb.sökEfterTelefonNummer(soktel)));
+	            	statuslista = kb.sökEfterTelefonNummer(soktel);
+	            	for(Person p : statuslista) {
+	            		status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
+	            	}
+	            	statusLabel.setText(status);
+	            	
 	            } else if(!sokmejl.isEmpty()) {
-	            	statusLabel.setText(kb.visa(kb.sökEfterMejl(sokmejl)));
+	            	statuslista = kb.sökEfterMejl(sokmejl);
+	            	for(Person p : statuslista) {
+	            		status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
+	            	}
+	            	statusLabel.setText(status);
 	            } else {
 	            	statusLabel.setText("LOSER - du har gjort FEL!");
 	            }
@@ -192,7 +213,7 @@ public class Ui implements ItemListener{
 	    		laggen = efternamnInput.getText();
 	    		laggtel = telInput.getText();
 	            laggmejl = mejlInput.getText();
-	            System.out.println("korv korv korv" + laggfn + laggen + laggtel + laggmejl);
+	            System.out.println("korv korv korv" + laggfn + "\t" + laggen + "\t" + laggtel + "\t "+ laggmejl);
 	            statusLabel.setText("Kontakt har lagts till!");	
 	            kb.läggTill(laggfn, laggen, laggtel, laggmejl);
 	            StringBuilder sb = new StringBuilder();
