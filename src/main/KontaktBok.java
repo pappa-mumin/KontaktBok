@@ -21,42 +21,48 @@ public class KontaktBok {
 			KontaktLista.add(x);
 		}
 		
-		public void sökEfterFörNamn(String x) {
-			int i = 0;
-			for(i = 0; i <= KontaktLista.size(); i++) {
+		public int sökEfterFörNamn(String x) {
+			int y = 0;
+			for(int i = 0; i < KontaktLista.size(); i++) {
 				String str = KontaktLista.get(i).getFnamn();
 				if(str.contains(x)) {
+					y++;
 					System.out.println(str + KontaktLista.get(i).getEnamn() + KontaktLista.get(i).getTel() + KontaktLista.get(i).getMejl());
 				} 
-			}
+			} return y;
 		}
 		
-		public void sökEfterEfterNamn(String x) {
-			int i = 0;
-			for(i = 0; i <= KontaktLista.size(); i++) {
+		public int sökEfterEfterNamn(String x) {
+			int y = 0;
+			for(int i = 0; i < KontaktLista.size(); i++) {
 				String str = KontaktLista.get(i).getEnamn();
 				if(str.contains(x)) {
 					System.out.println(KontaktLista.get(i).getFnamn() + str + KontaktLista.get(i).getTel() + KontaktLista.get(i).getMejl());
+					y++;
 				} 
-			}
+			} return y;
 		}
 		
-		public void sökEfterTelefonNummer(String x) {
-			int i = 0;
-			for(i = 0; i <= KontaktLista.size(); i++) {
+		public int sökEfterTelefonNummer(String x) {
+			int y = 0;
+			for(int i = 0; i < KontaktLista.size(); i++) {
 				String str = KontaktLista.get(i).getTel();
 				if(str.contains(x)) {
+					y++;
 					System.out.println(KontaktLista.get(i).getFnamn() + KontaktLista.get(i).getEnamn() + str + KontaktLista.get(i).getMejl());
 				} 
-			}
-		}		public void sökEfterMejl(String x) {
-			int i = 0;
-			for(i = 0; i <= KontaktLista.size(); i++) {
+			} return y;
+		}		
+		
+		public int sökEfterMejl(String x) {
+			int y = 0;
+			for(int i = 0; i < KontaktLista.size(); i++) {
 				String str = KontaktLista.get(i).getMejl();
 				if(str.contains(x)) {
+					y++;
 					System.out.println(KontaktLista.get(i).getFnamn() + KontaktLista.get(i).getEnamn() + KontaktLista.get(i).getTel() +str);
 				} 
-			}
+			} return y;
 		}
 		
 		public ArrayList<Person> getKontaktLista() {

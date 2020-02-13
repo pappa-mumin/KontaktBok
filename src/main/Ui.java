@@ -37,6 +37,9 @@ public class Ui implements ItemListener{
     public String bortfn, borten, borttel, bortmejl;
     private JLabel statusLabel;
     public JTextField fornamnInput, efternamnInput, telInput, mejlInput;
+    KontaktBok kb = new KontaktBok();
+    ByggBok bb = new ByggBok();
+    Fil fil = new Fil();
 	
     public void addComponentToPane(Container pane) {
         JPanel comboBoxPane = new JPanel(); 
@@ -130,7 +133,23 @@ public class Ui implements ItemListener{
 	    		soktel = telInput.getText();
 	            sokmejl = mejlInput.getText();
 	            System.out.println("korv korv korv" + sokfn + soken + soktel + sokmejl);
-	            statusLabel.setText("Sökning är gjord!");	
+	            
+	            
+
+	            
+	            if(!sokfn.isEmpty()) {
+	            	statusLabel.setText(kb.visa(kb.sökEfterFörNamn(sokfn)));
+	            } else if(!soken.isEmpty()) {
+	            	statusLabel.setText(kb.visa(kb.sökEfterEfterNamn(soken)));
+	            } else if(!soktel.isEmpty()) {
+	            	statusLabel.setText(kb.visa(kb.sökEfterTelefonNummer(soktel)));
+	            } else if(!sokmejl.isEmpty()) {
+	            	statusLabel.setText(kb.visa(kb.sökEfterMejl(sokmejl)));
+	            } else {
+	            	statusLabel.setText("LOSER - du har gjort FEL!");
+	            }
+	            
+	            
 	    	}
 	    });
 		
@@ -177,6 +196,10 @@ public class Ui implements ItemListener{
 	            laggmejl = mejlInput.getText();
 	            System.out.println("korv korv korv" + laggfn + laggen + laggtel + laggmejl);
 	            statusLabel.setText("Kontakt har lagts till!");	
+	            kb.läggTill(laggfn, laggen, laggtel, laggmejl);
+	            StringBuilder sb = new StringBuilder();
+	            sb = bb.skapaText(kb.getKontaktLista());
+	            fil.skapaFil(sb);
 	    	}
 	    });
 		
