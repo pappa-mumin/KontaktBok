@@ -86,8 +86,8 @@ public class Ui implements ItemListener{
     	String s = "";
     	for(Person p : kb.KontaktLista) {
     		s = "";
-    		s += bb.pad(p.getFnamn(), 20, ' ');
     		s += bb.pad(p.getEnamn(), 25, ' ');
+    		s += bb.pad(p.getFnamn(), 20, ' ');
     		s += bb.pad(p.getMejl(), 25, ' ');
     		s += bb.pad(p.getTel(), 15, ' ');
     		
@@ -110,6 +110,7 @@ public class Ui implements ItemListener{
 //    		s += String.format("%-25s %15s", p.getMejl(),p.getTel());
     	
     		listlista.add(s);
+    		listlista.sort(null);
     		System.out.println(s);
     	}
 //		ArrayList<String> cars = new ArrayList<String>();
