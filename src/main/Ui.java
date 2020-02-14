@@ -85,7 +85,26 @@ public class Ui implements ItemListener{
     	ArrayList<String> listlista = new ArrayList<String>();
     	String s = "";
     	for(Person p : kb.KontaktLista) {
-    		s = p.getFnamn() + "\t\t" + p.getEnamn() + "\t\t" + p.getTel() + "\t\t" + p.getMejl();
+    		s = "";
+    		
+    		if(p.getFnamn().length() < 5) {
+    			s += String.format("%-20s", p.getFnamn());
+    		} else if(p.getFnamn().length() < 10) {
+    			s += String.format("%-15s", p.getFnamn());
+    		} else{
+    			s += String.format("%-10s", p.getFnamn());
+    		} 
+    		
+    		if(p.getEnamn().length() < 5) {
+    			s += String.format("%-20s", p.getEnamn());
+    		} else if(p.getEnamn().length() < 10) {
+    			s += String.format("%-15s", p.getEnamn());
+    		} else{
+    			s += String.format("%-10s", p.getEnamn());
+    		} 
+    		
+    		s += p.getMejl() + "\t\t" + p.getTel();
+    	
     		listlista.add(s);
     	}
 //		ArrayList<String> cars = new ArrayList<String>();
