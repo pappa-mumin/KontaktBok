@@ -18,12 +18,22 @@ public class ByggBok {
 	StringBuilder skapaText(ArrayList<Person> lista) {
 		this.lista = lista;
 		for(int i = 0; i < lista.size(); i++) {
-			sb.append(lista.get(i).getFnamn() + "\t" + lista.get(i).getEnamn() + "\t" + 
-					lista.get(i).getMejl()+ "\t" + lista.get(i).getTel() + "\n");
+			sb.append(lista.get(i).getFnamn() + "," + lista.get(i).getEnamn() + "," + 
+					lista.get(i).getMejl()+ "," + lista.get(i).getTel() + "\n");
 		}
 		return sb;
 	}
 	
+	
+	public String pad(String str, int size, char padChar)
+	{
+	  StringBuilder padded = new StringBuilder(str);
+	  while (padded.length() < size)
+	  {
+	    padded.append(padChar);
+	  }
+	  return padded.toString();
+	}
 	
 	
 }
