@@ -81,26 +81,35 @@ public class Ui implements ItemListener{
 	}
     
     public JScrollPane visaLista() {
-		ArrayList<String> cars = new ArrayList<String>();
-	    cars.add("Volvo                fndjkshfdsiua");
-	    cars.add("BMW");
-	    cars.add("Ford");
-	    cars.add("Mazda");
-	    cars.add("Volvo");
-	    cars.add("BMW");
-	    cars.add("Ford");
-	    cars.add("Mazda");
-	    cars.add("Volvo");
-	    cars.add("BMW");
-	    cars.add("Ford");
-	    cars.add("Mazda");
-	    cars.add("Volvo");
-	    cars.add("BMW");
-	    cars.add("Ford");
-	    cars.add("Mazda");
-		JList<String> list = new JList(cars.toArray());
-		list.setLayoutOrientation(JList.VERTICAL);
-		scrollPane = new JScrollPane(list);
+//		ArrayList<String> cars = new ArrayList<String>();
+//	    cars.add("Volvo                fndjkshfdsiua");
+//	    cars.add("BMW");
+//	    cars.add("Ford");
+//	    cars.add("Mazda");
+//	    cars.add("Volvo");
+//	    cars.add("BMW");
+//	    cars.add("Ford");
+//	    cars.add("Mazda");
+//	    cars.add("Volvo");
+//	    cars.add("BMW");
+//	    cars.add("Ford");
+//	    cars.add("Mazda");
+//	    cars.add("Volvo");
+//	    cars.add("BMW");
+//	    cars.add("Ford");
+//	    cars.add("Mazda");
+//		JList<String> list = new JList(cars.toArray());
+//		list.setLayoutOrientation(JList.VERTICAL);
+////		list.setLayoutOrientation(JList.WHEN_FOCUSED);
+//		scrollPane = new JScrollPane(list);
+//    	return scrollPane;
+    	
+    	
+    	System.out.println(kb.KontaktLista.toString());
+    	
+    	JList<String> list = new JList(kb.KontaktLista.toArray());
+    	list.setLayoutOrientation(JList.VERTICAL);
+    	scrollPane = new JScrollPane(list);
     	return scrollPane;
     }
     

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class KontaktBok {
 		LäggTillKontakt ltk = new LäggTillKontakt();
-		ArrayList<Person> KontaktLista = ltk.FilTillLista();
+		public ArrayList<Person> KontaktLista = ltk.FilTillLista();
 		ArrayList<Person> SökLista = new ArrayList<Person>();
 		
 	
