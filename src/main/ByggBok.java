@@ -25,12 +25,20 @@ public class ByggBok {
 	}
 	
 	
-	public String pad(String str, int size, char padChar)
+	/**
+	 * pad() fyller ut strängar så de blir lika långa, för att snygga till presentationen av kontaktlistan.
+	 * @param str är själva textsträngen
+	 * @param strLängd är den önskade längden av strängen
+	 * @param tecken är de tecken du önskar fylla upp strängen med till önskad längd
+	 * @return en pad:ad sträng
+	 * @author Louise
+	 */
+	public String pad(String str, int strLängd, char tecken)
 	{
 	  StringBuilder padded = new StringBuilder(str);
-	  while (padded.length() < size)
+	  while (padded.length() < strLängd)
 	  {
-	    padded.append(padChar);
+	    padded.append(tecken);
 	  }
 	  return padded.toString();
 	}
