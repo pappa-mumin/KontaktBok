@@ -176,8 +176,7 @@ public class Ui implements ItemListener{
 //	    		soktel = telInput.getText();
 //	            sokmejl = mejlInput.getText();
 //	            System.out.println("korv korv korv " + sokfn + soken + soktel + sokmejl);
- 
-//	            Hej hopp! Vid sökning ges rätt kontakt i consolen men statuslabel ger alltid kontakten "Linn..."
+
 	            String status = "";
 	            ArrayList<Person> statuslista = new ArrayList<Person>();
 	            
