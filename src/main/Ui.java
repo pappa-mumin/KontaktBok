@@ -81,6 +81,7 @@ public class Ui implements ItemListener{
 	}
     
     public JScrollPane visaLista() {
+
     	ArrayList<String> listlista = new ArrayList<String>();
     	String s = "";
     	for(Person p : kb.KontaktLista) {
@@ -104,9 +105,20 @@ public class Ui implements ItemListener{
 //	    cars.add("BMW");
 //	    cars.add("Ford");
 //	    cars.add("Mazda");
+
 		JList<String> list = new JList(listlista.toArray());
 		list.setLayoutOrientation(JList.VERTICAL);
 		scrollPane = new JScrollPane(list);
+
+//		JList<String> list = new JList(cars.toArray());
+//		list.setLayoutOrientation(JList.VERTICAL);
+////		list.setLayoutOrientation(JList.WHEN_FOCUSED);
+//		scrollPane = new JScrollPane(list);
+//    	return scrollPane;
+//    	
+//    	
+//    	System.out.println(kb.KontaktLista.toString());
+
     	return scrollPane;
     }
     
