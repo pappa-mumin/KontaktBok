@@ -49,7 +49,7 @@ public class Ui implements ItemListener{
         cb.addItemListener(this);
         comboBoxPane.add(cb);
         
-		statusLabel = new JLabel(" ");
+		statusLabel = new JLabel(" ", JLabel.CENTER);
 		statusLabel.setSize(350, 100);
 
         //Create the "cards".
