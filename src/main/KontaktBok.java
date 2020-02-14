@@ -22,7 +22,7 @@ public class KontaktBok {
 			KontaktLista.add(x);
 		}
 		
-		public ArrayList sökEfterFörNamn(String x) {
+		public ArrayList<Person> sökEfterFörNamn(String x) {
 			int y = 0;
 			for(int i = 0; i < KontaktLista.size(); i++) {
 				String str = KontaktLista.get(i).getFnamn();
@@ -34,7 +34,7 @@ public class KontaktBok {
 			} return SökLista;
 		}
 		
-		public ArrayList sökEfterEfterNamn(String x) {
+		public ArrayList<Person> sökEfterEfterNamn(String x) {
 			int y = 0;
 			for(int i = 0; i < KontaktLista.size(); i++) {
 				String str = KontaktLista.get(i).getEnamn();
@@ -46,7 +46,7 @@ public class KontaktBok {
 			} return SökLista;
 		}
 		
-		public ArrayList sökEfterTelefonNummer(String x) {
+		public ArrayList<Person> sökEfterTelefonNummer(String x) {
 			int y = 0;
 			for(int i = 0; i < KontaktLista.size(); i++) {
 				String str = KontaktLista.get(i).getTel();
@@ -58,7 +58,7 @@ public class KontaktBok {
 			} return SökLista;
 		}		
 		
-		public ArrayList sökEfterMejl(String x) {
+		public ArrayList<Person> sökEfterMejl(String x) {
 			int y = 0;
 			for(int i = 0; i < KontaktLista.size(); i++) {
 				String str = KontaktLista.get(i).getMejl();
