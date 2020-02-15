@@ -172,7 +172,7 @@ public class Ui implements ItemListener{
 	            
 //	            Sökning: endast inmatning av Telefonnummer - FUNKAR INTE!
 	            } else if(sokfn.isEmpty() && soken.isEmpty() && !soktel.isEmpty() && sokmejl.isEmpty()) {
-	            	statuslista = kb.sökEfterEfterNamn(soktel);
+	            	statuslista = kb.sökEfterTelefonNummer(soktel);
 	            	for(Person p : statuslista) {
 	            		status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
 	            	}
@@ -180,7 +180,7 @@ public class Ui implements ItemListener{
 	            
 //		        Sökning: endast inmatning av Telefonnummer - FUNKAR INTE!
 		        } else if(sokfn.isEmpty() && soken.isEmpty() && soktel.isEmpty() && !sokmejl.isEmpty()) {
-		          	statuslista = kb.sökEfterEfterNamn(sokmejl);
+		          	statuslista = kb.sökEfterMejl(sokmejl);
 		           	for(Person p : statuslista) {
 		           		status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
 	            	}
@@ -208,7 +208,7 @@ public class Ui implements ItemListener{
 //		        Sökning: Förnamn och Telefonnummer -FUNKAR INTE!
 	            } else if (!sokfn.isEmpty() && soken.isEmpty() && !soktel.isEmpty() && sokmejl.isEmpty())	{
 	            	statuslista = kb.sökEfterFörNamn(sokfn);
-	            	statuslista2 = kb.sökEfterEfterNamn(soktel);
+	            	statuslista2 = kb.sökEfterTelefonNummer(soktel);
 	            	String korv = "";
 	            	String korv2 = "";
 	            	for(Person p : statuslista) {
@@ -227,7 +227,7 @@ public class Ui implements ItemListener{
 //			    Sökning: Förnamn och Mejl -FUNKAR INTE!
 	            } else if (!sokfn.isEmpty() && soken.isEmpty() && soktel.isEmpty() && !sokmejl.isEmpty())	{
 	            	statuslista = kb.sökEfterFörNamn(sokfn);
-	            	statuslista2 = kb.sökEfterEfterNamn(sokmejl);
+	            	statuslista2 = kb.sökEfterMejl(sokmejl);
 	            	String korv = "";
 	            	String korv2 = "";
 	            	for(Person p : statuslista) {
@@ -243,8 +243,8 @@ public class Ui implements ItemListener{
 		        
 //				Sökning: Efternamn och Telefon - FUNKAR INTE!
 	            } else if (sokfn.isEmpty() && !soken.isEmpty() && !soktel.isEmpty() && sokmejl.isEmpty())	{
-	            	statuslista = kb.sökEfterFörNamn(soken);
-	            	statuslista2 = kb.sökEfterEfterNamn(soktel);
+	            	statuslista = kb.sökEfterEfterNamn(soken);
+	            	statuslista2 = kb.sökEfterTelefonNummer(soktel);
 	            	String korv = "";
 	            	String korv2 = "";
 	            	for(Person p : statuslista) {
@@ -260,8 +260,8 @@ public class Ui implements ItemListener{
 		         
 //				Sökning: Efternamn och Mejl - FUNKAR INTE!
 	            } else if (sokfn.isEmpty() && !soken.isEmpty() && soktel.isEmpty() && !sokmejl.isEmpty())	{
-	            	statuslista = kb.sökEfterFörNamn(soken);
-	            	statuslista2 = kb.sökEfterEfterNamn(sokmejl);
+	            	statuslista = kb.sökEfterEfterNamn(soken);
+	            	statuslista2 = kb.sökEfterMejl(sokmejl);
 	            	String korv = "";
 	            	String korv2 = "";
 	            	for(Person p : statuslista) {
@@ -277,8 +277,8 @@ public class Ui implements ItemListener{
 		            
 //				Sökning: Telefon och Mejl - FUNKAR INTE!
 	            } else if (sokfn.isEmpty() && soken.isEmpty() && !soktel.isEmpty() && !sokmejl.isEmpty())	{
-	            	statuslista = kb.sökEfterFörNamn(soktel);
-	            	statuslista2 = kb.sökEfterEfterNamn(sokmejl);
+	            	statuslista = kb.sökEfterTelefonNummer(soktel);
+	            	statuslista2 = kb.sökEfterMejl(sokmejl);
 	            	String korv = "";
 	            	String korv2 = "";
 	            	for(Person p : statuslista) {
