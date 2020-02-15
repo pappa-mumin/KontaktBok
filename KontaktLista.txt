@@ -1,7 +1,4 @@
 Louise,Awesome,123345,louise@awesome.se
-Louise,Awesome,123345,louise@awesome.se
-Linn,HotBabe,23456,linn@snygging.nu
-Louise,Awesome,123345,louise@awesome.se
 Linn,HotBabe,23456,linn@snygging.nu
 Oscar,OldSchool,346456,oscar@groovy.com
 Nåt,Är,Konstigt,Lite

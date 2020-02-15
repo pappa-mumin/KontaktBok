@@ -86,10 +86,10 @@ public class Ui implements ItemListener{
     	String s = "";
     	for(Person p : kb.KontaktLista) {
     		s = "";
-    		s += bb.pad(p.getEnamn(), 25, ' ');
-    		s += bb.pad(p.getFnamn(), 20, ' ');
-    		s += bb.pad(p.getMejl(), 25, ' ');
-    		s += bb.pad(p.getTel(), 15, ' ');
+    		s += bb.pad(p.getFnamn(), 25, ' ');
+    		s += bb.pad(p.getEnamn(), 20, ' ');
+    		s += bb.pad(p.getTel(), 25, ' ');
+    		s += bb.pad(p.getMejl(), 15, ' ');
     		
 //    		if(p.getFnamn().length() < 5) {
 //    			s += String.format("%-18s", p.getFnamn());
