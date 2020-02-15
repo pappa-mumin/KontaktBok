@@ -161,7 +161,7 @@ public class Ui implements ItemListener{
 	            	}
 	            	statusLabel.setText(status);
 	            
-//	            Sökning: endast inmatning av Telefonnummer - FUNKAR INTE!
+//	            Sökning: endast inmatning av Telefonnummer
 	            } else if(sokfn.isEmpty() && soken.isEmpty() && !soktel.isEmpty() && sokmejl.isEmpty()) {
 	            	statuslista = kb.sökEfterTelefonNummer(soktel);
 	            	for(Person p : statuslista) {
@@ -169,7 +169,7 @@ public class Ui implements ItemListener{
 	            	}
 	            	statusLabel.setText(status);	
 	            
-//		        Sökning: endast inmatning av Telefonnummer - FUNKAR INTE!
+//		        Sökning: endast inmatning av Telefonnummer
 		        } else if(sokfn.isEmpty() && soken.isEmpty() && soktel.isEmpty() && !sokmejl.isEmpty()) {
 		          	statuslista = kb.sökEfterMejl(sokmejl);
 		           	for(Person p : statuslista) {
@@ -177,110 +177,58 @@ public class Ui implements ItemListener{
 	            	}
 	            	statusLabel.setText(status);		
 	            
-//	            Sökning: Förnamn och Efternamn - FUNKAR INTE!
+//	            Sökning: Förnamn och Efternamn 
 	            }else if (!sokfn.isEmpty() && !soken.isEmpty() && soktel.isEmpty() && sokmejl.isEmpty())	{
-	            	statuslista = kb.sökEfterFörNamn(sokfn);
-	            	statuslista2 = kb.sökEfterEfterNamn(soken);
-	            	String korv = "";
-	            	String korv2 = "";
-	            	for(Person p : statuslista) {
-	            		korv = p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
-		            	for(Person p2 : statuslista2) {
-		            		korv2 = p2.getFnamn() + " " + p2.getEnamn() + " " + p2.getMejl() + " " + p2.getTel() + "\n";
-		            	}
+	            	for (Person p: kb.KontaktLista) {
+	            		if(sokfn.equals(p.getFnamn()) && soken.equals(p.getEnamn())) {
+	            			status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
+	            		}
 	            	}
-            		if(korv.equals(korv2) && korv2.equals(korv)) {
-            			status += korv;
-            		}else {
-            			status += "Ingen träff vid sökning av förnamn och efternamn.";
-            		}
-		            statusLabel.setText(status);
+	            	statusLabel.setText(status);		            
 	            
-//		        Sökning: Förnamn och Telefonnummer -FUNKAR INTE!
+//		        Sökning: Förnamn och Telefonnummer
 	            } else if (!sokfn.isEmpty() && soken.isEmpty() && !soktel.isEmpty() && sokmejl.isEmpty())	{
-	            	statuslista = kb.sökEfterFörNamn(sokfn);
-	            	statuslista2 = kb.sökEfterTelefonNummer(soktel);
-	            	String korv = "";
-	            	String korv2 = "";
-	            	for(Person p : statuslista) {
-	            		korv = p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
-		            	for(Person p2 : statuslista2) {
-		            		korv2 = p2.getFnamn() + " " + p2.getEnamn() + " " + p2.getMejl() + " " + p2.getTel() + "\n";
-		            	}
+	            	for (Person p: kb.KontaktLista) {
+	            		if(sokfn.equals(p.getFnamn()) && soktel.equals(p.getTel())) {
+	            			status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
+	            		}
 	            	}
-            		if(korv.equals(korv2)) {
-            			status += korv;
-            		}else {
-            			status += "Ingen träff vid sökning av förnamn och efternamn.";
-            		}
 		            statusLabel.setText(status);
 		       
-//			    Sökning: Förnamn och Mejl -FUNKAR INTE!
+//			    Sökning: Förnamn och Mejl 
 	            } else if (!sokfn.isEmpty() && soken.isEmpty() && soktel.isEmpty() && !sokmejl.isEmpty())	{
-	            	statuslista = kb.sökEfterFörNamn(sokfn);
-	            	statuslista2 = kb.sökEfterMejl(sokmejl);
-	            	String korv = "";
-	            	String korv2 = "";
-	            	for(Person p : statuslista) {
-	            		korv = p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
-		            	for(Person p2 : statuslista2) {
-		            		korv2 = p2.getFnamn() + " " + p2.getEnamn() + " " + p2.getMejl() + " " + p2.getTel() + "\n";
-		            	}
+	            	for (Person p: kb.KontaktLista) {
+	            		if(sokfn.equals(p.getFnamn()) && sokmejl.equals(p.getMejl())) {
+	            			status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
+	            		}
 	            	}
-            		if(korv.equals(korv2)) {
-            			status += korv;
-            		}
 		            statusLabel.setText(status);
 		        
-//				Sökning: Efternamn och Telefon - FUNKAR INTE!
+//				Sökning: Efternamn och Telefon
 	            } else if (sokfn.isEmpty() && !soken.isEmpty() && !soktel.isEmpty() && sokmejl.isEmpty())	{
-	            	statuslista = kb.sökEfterEfterNamn(soken);
-	            	statuslista2 = kb.sökEfterTelefonNummer(soktel);
-	            	String korv = "";
-	            	String korv2 = "";
-	            	for(Person p : statuslista) {
-	            		korv = p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
-		            	for(Person p2 : statuslista2) {
-		            		korv2 = p2.getFnamn() + " " + p2.getEnamn() + " " + p2.getMejl() + " " + p2.getTel() + "\n";
-		            	}
+	            	for (Person p: kb.KontaktLista) {
+	            		if(soken.equals(p.getEnamn()) && soktel.equals(p.getMejl())) {
+	            			status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
+	            		}
 	            	}
-            		if(korv.equals(korv2)) {
-            			status += korv;
-            		}
 		            statusLabel.setText(status);
 		         
-//				Sökning: Efternamn och Mejl - FUNKAR INTE!
+//				Sökning: Efternamn och Mejl
 	            } else if (sokfn.isEmpty() && !soken.isEmpty() && soktel.isEmpty() && !sokmejl.isEmpty())	{
-	            	statuslista = kb.sökEfterEfterNamn(soken);
-	            	statuslista2 = kb.sökEfterMejl(sokmejl);
-	            	String korv = "";
-	            	String korv2 = "";
-	            	for(Person p : statuslista) {
-	            		korv = p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
-		            	for(Person p2 : statuslista2) {
-		            		korv2 = p2.getFnamn() + " " + p2.getEnamn() + " " + p2.getMejl() + " " + p2.getTel() + "\n";
-		            	}
+	            	for (Person p: kb.KontaktLista) {
+	            		if(soken.equals(p.getEnamn()) && sokmejl.equals(p.getMejl())) {
+	            			status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
+	            		}
 	            	}
-            		if(korv.equals(korv2)) {
-            			status += korv;
-            		}
 		            statusLabel.setText(status); 
 		            
-//				Sökning: Telefon och Mejl - FUNKAR INTE!
+//				Sökning: Telefon och Mejl
 	            } else if (sokfn.isEmpty() && soken.isEmpty() && !soktel.isEmpty() && !sokmejl.isEmpty())	{
-	            	statuslista = kb.sökEfterTelefonNummer(soktel);
-	            	statuslista2 = kb.sökEfterMejl(sokmejl);
-	            	String korv = "";
-	            	String korv2 = "";
-	            	for(Person p : statuslista) {
-	            		korv = p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
-		            	for(Person p2 : statuslista2) {
-		            		korv2 = p2.getFnamn() + " " + p2.getEnamn() + " " + p2.getMejl() + " " + p2.getTel() + "\n";
-		            	}
+	            	for (Person p: kb.KontaktLista) {
+	            		if(soktel.equals(p.getTel()) && sokmejl.equals(p.getMejl())) {
+	            			status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
+	            		}
 	            	}
-            		if(korv.equals(korv2)) {
-            			status += korv;
-            		}
 		            statusLabel.setText(status);  
 		            
 	            }else {
