@@ -143,96 +143,214 @@ public class Ui implements ItemListener{
 
 	            String status = "";
 	            ArrayList<Person> statuslista = new ArrayList<Person>();
-	            ArrayList<Person> statuslista2 = new ArrayList<Person>();
 	            
-//	            Sökning: endast inmatning av Förnamn
+//	            Sökning: Förnamn
 	            if(!sokfn.isEmpty() && soken.isEmpty() && soktel.isEmpty() && sokmejl.isEmpty()) {
-	            	statuslista = kb.sökEfterFörNamn(sokfn);
-	            	for(Person p : statuslista) {
-	            		status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
+//	            	statuslista = kb.sökEfterFörNamn(sokfn);
+//	            	for(Person p : statuslista) {
+//	            		status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
+//	            	}
+//	            	if(status == "") {
+//	            		status += "Du har sökt på en kontakt som inte finns";
+//	            	}
+	            	for (Person p: kb.KontaktLista) {
+	            		if(sokfn.equalsIgnoreCase(p.getFnamn())) {
+	            			status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
+	            		}
+	            	}
+	            	if(status == "") {
+	            		status += "Du har sökt på en kontakt som inte finns";
 	            	}
 	            	statusLabel.setText(status);
 	            
-//	            Sökning: endast inmatning av Efternamn
+//	            Sökning: Efternamn
 	            } else if(sokfn.isEmpty() && !soken.isEmpty() && soktel.isEmpty() && sokmejl.isEmpty()) {
-	            	statuslista = kb.sökEfterEfterNamn(soken);
-	            	for(Person p : statuslista) {
-	            		status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
+//	            	statuslista = kb.sökEfterEfterNamn(soken);
+//	            	for(Person p : statuslista) {
+//	            		status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
+//	            	}
+//	            	if(status == "") {
+//	            		status += "Du har sökt på en kontakt som inte finns";
+//	            	}
+	            	for (Person p: kb.KontaktLista) {
+	            		if(soken.equalsIgnoreCase(p.getEnamn())) {
+	            			status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
+	            		}
+	            	}
+	            	if(status == "") {
+	            		status += "Du har sökt på en kontakt som inte finns";
 	            	}
 	            	statusLabel.setText(status);
 	            
-//	            Sökning: endast inmatning av Telefonnummer
+//	            Sökning: Telefonnummer
 	            } else if(sokfn.isEmpty() && soken.isEmpty() && !soktel.isEmpty() && sokmejl.isEmpty()) {
-	            	statuslista = kb.sökEfterTelefonNummer(soktel);
-	            	for(Person p : statuslista) {
-	            		status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
+//	            	statuslista = kb.sökEfterTelefonNummer(soktel);
+//	            	for(Person p : statuslista) {
+//	            		status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
+//	            	}
+//	            	if(status == "") {
+//	            		status += "Du har sökt på en kontakt som inte finns";
+//	            	}
+	            	for (Person p: kb.KontaktLista) {
+	            		if(soktel.equalsIgnoreCase(p.getTel())) {
+	            			status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
+	            		}
+	            	}
+	            	if(status == "") {
+	            		status += "Du har sökt på en kontakt som inte finns";
 	            	}
 	            	statusLabel.setText(status);	
 	            
-//		        Sökning: endast inmatning av Telefonnummer
+//		        Sökning: Mejl
 		        } else if(sokfn.isEmpty() && soken.isEmpty() && soktel.isEmpty() && !sokmejl.isEmpty()) {
-		          	statuslista = kb.sökEfterMejl(sokmejl);
-		           	for(Person p : statuslista) {
-		           		status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
+//		          	statuslista = kb.sökEfterMejl(sokmejl);
+//		           	for(Person p : statuslista) {
+//		           		status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
+//	            	}
+//	            	if(status == "") {
+//	            		status += "Du har sökt på en kontakt som inte finns";
+//	            	}
+	            	for (Person p: kb.KontaktLista) {
+	            		if(sokmejl.equalsIgnoreCase(p.getMejl())) {
+	            			status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
+	            		}
+	            	}
+	            	if(status == "") {
+	            		status += "Du har sökt på en kontakt som inte finns";
 	            	}
 	            	statusLabel.setText(status);		
 	            
 //	            Sökning: Förnamn och Efternamn 
 	            }else if (!sokfn.isEmpty() && !soken.isEmpty() && soktel.isEmpty() && sokmejl.isEmpty())	{
 	            	for (Person p: kb.KontaktLista) {
-	            		if(sokfn.equals(p.getFnamn()) && soken.equals(p.getEnamn())) {
+	            		if(sokfn.equalsIgnoreCase(p.getFnamn()) && soken.equalsIgnoreCase(p.getEnamn())) {
 	            			status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
 	            		}
+	            	}
+	            	if(status == "") {
+	            		status += "Du har sökt på en kontakt som inte finns";
 	            	}
 	            	statusLabel.setText(status);		            
 	            
 //		        Sökning: Förnamn och Telefonnummer
 	            } else if (!sokfn.isEmpty() && soken.isEmpty() && !soktel.isEmpty() && sokmejl.isEmpty())	{
 	            	for (Person p: kb.KontaktLista) {
-	            		if(sokfn.equals(p.getFnamn()) && soktel.equals(p.getTel())) {
+	            		if(sokfn.equalsIgnoreCase(p.getFnamn()) && soktel.equalsIgnoreCase(p.getTel())) {
 	            			status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
 	            		}
+	            	}
+	            	if(status == "") {
+	            		status += "Du har sökt på en kontakt som inte finns";
 	            	}
 		            statusLabel.setText(status);
 		       
 //			    Sökning: Förnamn och Mejl 
 	            } else if (!sokfn.isEmpty() && soken.isEmpty() && soktel.isEmpty() && !sokmejl.isEmpty())	{
 	            	for (Person p: kb.KontaktLista) {
-	            		if(sokfn.equals(p.getFnamn()) && sokmejl.equals(p.getMejl())) {
+	            		if(sokfn.equalsIgnoreCase(p.getFnamn()) && sokmejl.equalsIgnoreCase(p.getMejl())) {
 	            			status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
 	            		}
+	            	}
+	            	if(status == "") {
+	            		status += "Du har sökt på en kontakt som inte finns";
 	            	}
 		            statusLabel.setText(status);
 		        
 //				Sökning: Efternamn och Telefon
 	            } else if (sokfn.isEmpty() && !soken.isEmpty() && !soktel.isEmpty() && sokmejl.isEmpty())	{
 	            	for (Person p: kb.KontaktLista) {
-	            		if(soken.equals(p.getEnamn()) && soktel.equals(p.getMejl())) {
+	            		if(soken.equalsIgnoreCase(p.getEnamn()) && soktel.equalsIgnoreCase(p.getMejl())) {
 	            			status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
 	            		}
+	            	}
+	            	if(status == "") {
+	            		status += "Du har sökt på en kontakt som inte finns";
 	            	}
 		            statusLabel.setText(status);
 		         
 //				Sökning: Efternamn och Mejl
 	            } else if (sokfn.isEmpty() && !soken.isEmpty() && soktel.isEmpty() && !sokmejl.isEmpty())	{
 	            	for (Person p: kb.KontaktLista) {
-	            		if(soken.equals(p.getEnamn()) && sokmejl.equals(p.getMejl())) {
+	            		if(soken.equalsIgnoreCase(p.getEnamn()) && sokmejl.equalsIgnoreCase(p.getMejl())) {
 	            			status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
 	            		}
+	            	}
+	            	if(status == "") {
+	            		status += "Du har sökt på en kontakt som inte finns";
 	            	}
 		            statusLabel.setText(status); 
 		            
 //				Sökning: Telefon och Mejl
 	            } else if (sokfn.isEmpty() && soken.isEmpty() && !soktel.isEmpty() && !sokmejl.isEmpty())	{
 	            	for (Person p: kb.KontaktLista) {
-	            		if(soktel.equals(p.getTel()) && sokmejl.equals(p.getMejl())) {
+	            		if(soktel.equalsIgnoreCase(p.getTel()) && sokmejl.equalsIgnoreCase(p.getMejl())) {
 	            			status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
 	            		}
 	            	}
+	            	if(status == "") {
+	            		status += "Du har sökt på en kontakt som inte finns";
+	            	}
 		            statusLabel.setText(status);  
+		        
+//					Sökning: Förnamn, Efternamn och Telefon
+	            }else if (!sokfn.isEmpty() && !soken.isEmpty() && !soktel.isEmpty() && sokmejl.isEmpty())	{
+	            	for (Person p: kb.KontaktLista) {
+	            		if(sokfn.equalsIgnoreCase(p.getFnamn()) && soken.equalsIgnoreCase(p.getEnamn()) && soktel.equalsIgnoreCase(p.getTel())) {
+	            			status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
+	            		}
+	            	}
+	            	if(status == "") {
+	            		status += "Du har sökt på en kontakt som inte finns";
+	            	}
+	            	statusLabel.setText(status);
+	            	
+//					Sökning: Förnamn, Efternamn och Mejl
+	            }else if (!sokfn.isEmpty() && !soken.isEmpty() && soktel.isEmpty() && !sokmejl.isEmpty())	{
+	            	for (Person p: kb.KontaktLista) {
+	            		if(sokfn.equalsIgnoreCase(p.getFnamn()) && soken.equalsIgnoreCase(p.getEnamn()) && sokmejl.equalsIgnoreCase(p.getMejl())) {
+	            			status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
+	            		}
+	            	}
+	            	statusLabel.setText(status);
+
+//					Sökning: Förnamn, Telefon och Mejl
+	            } else if (!sokfn.isEmpty() && soken.isEmpty() && !soktel.isEmpty() && !sokmejl.isEmpty())	{
+	            	for (Person p: kb.KontaktLista) {
+	            		if(sokfn.equalsIgnoreCase(p.getFnamn()) && soktel.equalsIgnoreCase(p.getTel()) && sokmejl.equalsIgnoreCase(p.getMejl())) {
+	            			status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
+	            		}
+	            	}
+	            	if(status == "") {
+	            		status += "Du har sökt på en kontakt som inte finns";
+	            	}
+		            statusLabel.setText(status); 
+		            
+//					Sökning: Efternamn, Telefon och Mejl
+	            } else if (sokfn.isEmpty() && !soken.isEmpty() && !soktel.isEmpty() && !sokmejl.isEmpty())	{
+	            	for (Person p: kb.KontaktLista) {
+	            		if(soken.equalsIgnoreCase(p.getEnamn()) && soktel.equalsIgnoreCase(p.getTel()) && sokmejl.equalsIgnoreCase(p.getMejl())) {
+	            			status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
+	            		}
+	            	}
+	            	if(status == "") {
+	            		status += "Du har sökt på en kontakt som inte finns";
+	            	}
+		            statusLabel.setText(status); 
+		            
+//					Sökning: Förnamn, Efternamn, Telefon och Mejl
+	            } else if (!sokfn.isEmpty() && !soken.isEmpty() && !soktel.isEmpty() && !sokmejl.isEmpty())	{
+	            	for (Person p: kb.KontaktLista) {
+	            		if(sokfn.equalsIgnoreCase(p.getFnamn()) && soken.equalsIgnoreCase(p.getEnamn()) && soktel.equalsIgnoreCase(p.getTel()) && sokmejl.equalsIgnoreCase(p.getMejl())) {
+	            			status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
+	            		}
+	            	}
+	            	if(status == "") {
+	            		status += "Du har sökt på en kontakt som inte finns";
+	            	}
+		            statusLabel.setText(status); 
 		            
 	            }else {
-	            	status += "Ingen träff!";
+	            	status += "Du har inte gjort en sökning!";
 	            	statusLabel.setText(status);   
 	            }              
 	    	}
