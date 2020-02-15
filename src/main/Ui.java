@@ -86,26 +86,32 @@ public class Ui implements ItemListener{
     	String s = "";
     	for(Person p : kb.KontaktLista) {
     		s = "";
+    		s += bb.pad(p.getEnamn(), 25, ' ');
+    		s += bb.pad(p.getFnamn(), 20, ' ');
+    		s += bb.pad(p.getMejl(), 25, ' ');
+    		s += bb.pad(p.getTel(), 15, ' ');
     		
-    		if(p.getFnamn().length() < 5) {
-    			s += String.format("%-20s", p.getFnamn());
-    		} else if(p.getFnamn().length() < 10) {
-    			s += String.format("%-15s", p.getFnamn());
-    		} else{
-    			s += String.format("%-10s", p.getFnamn());
-    		} 
-    		
-    		if(p.getEnamn().length() < 5) {
-    			s += String.format("%-20s", p.getEnamn());
-    		} else if(p.getEnamn().length() < 10) {
-    			s += String.format("%-15s", p.getEnamn());
-    		} else{
-    			s += String.format("%-10s", p.getEnamn());
-    		} 
-    		
-    		s += p.getMejl() + "\t\t" + p.getTel();
+//    		if(p.getFnamn().length() < 5) {
+//    			s += String.format("%-18s", p.getFnamn());
+//    		} else if(p.getFnamn().length() < 10) {
+//    			s += String.format("%-17s", p.getFnamn());
+//    		} else{
+//    			s += String.format("%-13s", p.getFnamn());
+//    		} 
+//    		
+//    		if(p.getEnamn().length() < 5) {
+//    			s += String.format("%-20s", p.getEnamn());
+//    		} else if(p.getEnamn().length() < 10) {
+//    			s += String.format("%-18s", p.getEnamn());
+//    		} else{
+//    			s += String.format("%-16s", p.getEnamn());
+//    		} 
+//    		
+//    		s += String.format("%-25s %15s", p.getMejl(),p.getTel());
     	
     		listlista.add(s);
+    		listlista.sort(null);
+    		System.out.println(s);
     	}
 //		ArrayList<String> cars = new ArrayList<String>();
 //	    cars.add("Volvo                fndjkshfdsiua");
@@ -170,7 +176,7 @@ public class Ui implements ItemListener{
 //	    		soktel = telInput.getText();
 //	            sokmejl = mejlInput.getText();
 //	            System.out.println("korv korv korv " + sokfn + soken + soktel + sokmejl);
- 
+
 	            String status = "";
 	            ArrayList<Person> statuslista = new ArrayList<Person>();
 	            ArrayList<Person> statuslista2 = new ArrayList<Person>();
@@ -207,21 +213,7 @@ public class Ui implements ItemListener{
 	            }
 	            
 	            
-//	            if(!sokfn.isEmpty()) {
-//	            	statuslista = kb.sökEfterFörNamn(sokfn);
-//	            	for(Person p : statuslista) {
-//	            		status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
-//	            	}
-//	            	statusLabel.setText(status);
-//	            	
-//	            } else if(!soken.isEmpty()) {
-//	            	statuslista = kb.sökEfterEfterNamn(soken);
-//	            	for(Person p : statuslista) {
-//	            		status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
-//	            	}
-//	            	statusLabel.setText(status);
-//
-//	            	
+	
 //	            } else if(!soktel.isEmpty()) {
 //	            	statuslista = kb.sökEfterTelefonNummer(soktel);
 //	            	for(Person p : statuslista) {

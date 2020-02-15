@@ -15,7 +15,7 @@ class KontaktBokTest {
 	
 	private KontaktBok konBok;
 	private Person testPerson;
-	ArrayList<Person> KontaktLista = new ArrayList<Person>();
+
 
 	@BeforeEach
 	void nyKontaktBok() {
@@ -24,6 +24,7 @@ class KontaktBokTest {
 
 	@BeforeEach
 	void PersonerIArrayen() {
+		konBok.getKontaktLista().clear();
 		testPerson = new Person("Förnamn","Efternamn", "Telefonnummer", "Melj");
 		konBok.getKontaktLista().add(testPerson);
 	}
@@ -37,7 +38,7 @@ class KontaktBokTest {
 	@Test
 	void taBortTest() {
 		konBok.taBort(0);
-		assertTrue(KontaktLista.isEmpty());
+		assertTrue(konBok.getKontaktLista().isEmpty());
 	}
 	
 	@Test
@@ -47,5 +48,32 @@ class KontaktBokTest {
 		assertEquals(konBok.getKontaktLista().get(1), testPerson1);
 	}
 	
-
+	@Test
+	void sökEfterFörnamnTest() {
+		ArrayList<Person> hjälp = new ArrayList<Person>();
+		Person tp = new Person("Är ", "Mitt ","FörNamn ", "här?");
+		hjälp.add(tp);
+		konBok.getKontaktLista().add(tp);
+		ArrayList<Person> sl = konBok.sökEfterFörNamn("Är ");
+		
+		assertEquals(sl.get(0), hjälp.get(0));
+		
+	}
+	
+	@Test
+	void sökEfterEfternamnTest() {
+		ArrayList<Person> hjälp = new ArrayList<Person>();
+		Person tp = new Person("Är ", "Mitt ","FörNamn ", "här?");
+		hjälp.add(tp);
+		konBok.getKontaktLista().add(tp);
+		ArrayList<Person> sl = konBok.sökEfterEfterNamn("Mitt ");
+		
+		assertEquals(sl.get(0), hjälp.get(0));
+	}
+	
+	@Test
+	void sökEfterTelefonNummerTest() {
+		
+	}
+	
 }

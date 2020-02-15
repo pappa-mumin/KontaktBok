@@ -23,7 +23,7 @@ public class LäggTillKontakt {
 	
 	String fnamn, enamn, tel, mejl;
 		while(s.hasNextLine()) {
-			radhållare = s.nextLine().split("\t");
+			radhållare = s.nextLine().split(",");
 			fnamn = radhållare[0];
 			enamn = radhållare[1];
 			tel = radhållare[2];

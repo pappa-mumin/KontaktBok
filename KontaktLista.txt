@@ -1,6 +1,7 @@
-Louise	Awesome	1234545	louise@awesome.com
-Linn	Fabulous	2345566	linn@fabulous.se
-Oscar	BadAss	2457757	oscar@badass.org
-prutt	fniss	kiss	smisk
-Pelle	Plutt	Skrutt	Inte-prutt
-Louise	Fis	Please	Gris
+Louise,Awesome,123345,louise@awesome.se
+Louise,Awesome,123345,louise@awesome.se
+Linn,HotBabe,23456,linn@snygging.nu
+Louise,Awesome,123345,louise@awesome.se
+Linn,HotBabe,23456,linn@snygging.nu
+Oscar,OldSchool,346456,oscar@groovy.com
+Nåt,Är,Konstigt,Lite
