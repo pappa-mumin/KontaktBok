@@ -5,3 +5,9 @@ Louise,Awesome,123345,louise@awesome.se
 Linn,HotBabe,23456,linn@snygging.nu
 Oscar,OldSchool,346456,oscar@groovy.com
 Nåt,Är,Konstigt,Lite
+Louise,Fis,112,moget@rimmat.se
+Oscar,Kanin,oscar@kanin.se,121212
+Louise,Hjärtevän,123456,heart@therightplace.se
+Oscar,Steelbutt,findmeontinder@yeahyeah.se,121212
+Louise,Sötnos,121212,gullegris@fis.se
+MinGrupp,ÄrBättreÄnDin,tihi@hihi.se,123456

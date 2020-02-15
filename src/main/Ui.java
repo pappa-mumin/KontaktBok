@@ -113,36 +113,10 @@ public class Ui implements ItemListener{
     		listlista.sort(null);
     		System.out.println(s);
     	}
-//		ArrayList<String> cars = new ArrayList<String>();
-//	    cars.add("Volvo                fndjkshfdsiua");
-//	    cars.add("BMW");
-//	    cars.add("Ford");
-//	    cars.add("Mazda");
-//	    cars.add("Volvo");
-//	    cars.add("BMW");
-//	    cars.add("Ford");
-//	    cars.add("Mazda");
-//	    cars.add("Volvo");
-//	    cars.add("BMW");
-//	    cars.add("Ford");
-//	    cars.add("Mazda");
-//	    cars.add("Volvo");
-//	    cars.add("BMW");
-//	    cars.add("Ford");
-//	    cars.add("Mazda");
 
 		JList<String> list = new JList(listlista.toArray());
 		list.setLayoutOrientation(JList.VERTICAL);
 		scrollPane = new JScrollPane(list);
-
-//		JList<String> list = new JList(cars.toArray());
-//		list.setLayoutOrientation(JList.VERTICAL);
-////		list.setLayoutOrientation(JList.WHEN_FOCUSED);
-//		scrollPane = new JScrollPane(list);
-//    	return scrollPane;
-//    	
-//    	
-//    	System.out.println(kb.KontaktLista.toString());
 
     	return scrollPane;
     }
@@ -164,8 +138,8 @@ public class Ui implements ItemListener{
 	    
 	    fornamnInput.setText("");
 		efternamnInput.setText("");
-//	    telInput.setText("");
-//	    mejlInput.setText("");
+	    telInput.setText("");
+	    mejlInput.setText("");
 
 		sokKnapp.setActionCommand("Sök");
 
@@ -173,31 +147,87 @@ public class Ui implements ItemListener{
 	    	public void actionPerformed(ActionEvent e) {
 	    		sokfn = fornamnInput.getText();		   
 	    		soken = efternamnInput.getText();
-//	    		soktel = telInput.getText();
-//	            sokmejl = mejlInput.getText();
-//	            System.out.println("korv korv korv " + sokfn + soken + soktel + sokmejl);
+	    		soktel = telInput.getText();
+	            sokmejl = mejlInput.getText();
 
 	            String status = "";
 	            ArrayList<Person> statuslista = new ArrayList<Person>();
 	            ArrayList<Person> statuslista2 = new ArrayList<Person>();
 	            
-	            if(!sokfn.isEmpty() && soken.isEmpty()) {
+//	            Sökning: endast inmatning av Förnamn
+	            if(!sokfn.isEmpty() && soken.isEmpty() && soktel.isEmpty() && sokmejl.isEmpty()) {
 	            	statuslista = kb.sökEfterFörNamn(sokfn);
 	            	for(Person p : statuslista) {
 	            		status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
 	            	}
 	            	statusLabel.setText(status);
-	            	    	
-	            } else if(sokfn.isEmpty() && !soken.isEmpty()) {
+	            
+//	            Sökning: endast inmatning av Efternamn
+	            } else if(sokfn.isEmpty() && !soken.isEmpty() && soktel.isEmpty() && sokmejl.isEmpty()) {
 	            	statuslista = kb.sökEfterEfterNamn(soken);
 	            	for(Person p : statuslista) {
 	            		status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
 	            	}
 	            	statusLabel.setText(status);
 	            
-	            }else if (!sokfn.isEmpty() && !soken.isEmpty())	{
+//	            Sökning: endast inmatning av Telefonnummer - FUNKAR INTE!
+	            } else if(sokfn.isEmpty() && soken.isEmpty() && !soktel.isEmpty() && sokmejl.isEmpty()) {
+	            	statuslista = kb.sökEfterEfterNamn(soktel);
+	            	for(Person p : statuslista) {
+	            		status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
+	            	}
+	            	statusLabel.setText(status);	
+	            
+//		        Sökning: endast inmatning av Telefonnummer - FUNKAR INTE!
+		        } else if(sokfn.isEmpty() && soken.isEmpty() && soktel.isEmpty() && !sokmejl.isEmpty()) {
+		          	statuslista = kb.sökEfterEfterNamn(sokmejl);
+		           	for(Person p : statuslista) {
+		           		status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
+	            	}
+	            	statusLabel.setText(status);		
+	            
+//	            Sökning: Förnamn och Efternamn - FUNKAR INTE!
+	            }else if (!sokfn.isEmpty() && !soken.isEmpty() && soktel.isEmpty() && sokmejl.isEmpty())	{
 	            	statuslista = kb.sökEfterFörNamn(sokfn);
 	            	statuslista2 = kb.sökEfterEfterNamn(soken);
+	            	String korv = "";
+	            	String korv2 = "";
+	            	for(Person p : statuslista) {
+	            		korv = p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
+		            	for(Person p2 : statuslista2) {
+		            		korv2 = p2.getFnamn() + " " + p2.getEnamn() + " " + p2.getMejl() + " " + p2.getTel() + "\n";
+		            	}
+	            	}
+            		if(korv.equals(korv2) && korv2.equals(korv)) {
+            			status += korv;
+            		}else {
+            			status += "Ingen träff vid sökning av förnamn och efternamn.";
+            		}
+		            statusLabel.setText(status);
+	            
+//		        Sökning: Förnamn och Telefonnummer -FUNKAR INTE!
+	            } else if (!sokfn.isEmpty() && soken.isEmpty() && !soktel.isEmpty() && sokmejl.isEmpty())	{
+	            	statuslista = kb.sökEfterFörNamn(sokfn);
+	            	statuslista2 = kb.sökEfterEfterNamn(soktel);
+	            	String korv = "";
+	            	String korv2 = "";
+	            	for(Person p : statuslista) {
+	            		korv = p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
+		            	for(Person p2 : statuslista2) {
+		            		korv2 = p2.getFnamn() + " " + p2.getEnamn() + " " + p2.getMejl() + " " + p2.getTel() + "\n";
+		            	}
+	            	}
+            		if(korv.equals(korv2)) {
+            			status += korv;
+            		}else {
+            			status += "Ingen träff vid sökning av förnamn och efternamn.";
+            		}
+		            statusLabel.setText(status);
+		       
+//			    Sökning: Förnamn och Mejl -FUNKAR INTE!
+	            } else if (!sokfn.isEmpty() && soken.isEmpty() && soktel.isEmpty() && !sokmejl.isEmpty())	{
+	            	statuslista = kb.sökEfterFörNamn(sokfn);
+	            	statuslista2 = kb.sökEfterEfterNamn(sokmejl);
 	            	String korv = "";
 	            	String korv2 = "";
 	            	for(Person p : statuslista) {
@@ -210,28 +240,62 @@ public class Ui implements ItemListener{
             			status += korv;
             		}
 		            statusLabel.setText(status);
-	            }
-	            
-	            
-	
-//	            } else if(!soktel.isEmpty()) {
-//	            	statuslista = kb.sökEfterTelefonNummer(soktel);
-//	            	for(Person p : statuslista) {
-//	            		status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
-//	            	}
-//	            	statusLabel.setText(status);
-//	            	
-//	            } else if(!sokmejl.isEmpty()) {
-//	            	statuslista = kb.sökEfterMejl(sokmejl);
-//	            	for(Person p : statuslista) {
-//	            		status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
-//	            	}
-//	            	statusLabel.setText(status);
-//	            } else {
-//	            	statusLabel.setText("Nåt har gått fel");
-//	            }
-	            
-	            
+		        
+//				Sökning: Efternamn och Telefon - FUNKAR INTE!
+	            } else if (sokfn.isEmpty() && !soken.isEmpty() && !soktel.isEmpty() && sokmejl.isEmpty())	{
+	            	statuslista = kb.sökEfterFörNamn(soken);
+	            	statuslista2 = kb.sökEfterEfterNamn(soktel);
+	            	String korv = "";
+	            	String korv2 = "";
+	            	for(Person p : statuslista) {
+	            		korv = p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
+		            	for(Person p2 : statuslista2) {
+		            		korv2 = p2.getFnamn() + " " + p2.getEnamn() + " " + p2.getMejl() + " " + p2.getTel() + "\n";
+		            	}
+	            	}
+            		if(korv.equals(korv2)) {
+            			status += korv;
+            		}
+		            statusLabel.setText(status);
+		         
+//				Sökning: Efternamn och Mejl - FUNKAR INTE!
+	            } else if (sokfn.isEmpty() && !soken.isEmpty() && soktel.isEmpty() && !sokmejl.isEmpty())	{
+	            	statuslista = kb.sökEfterFörNamn(soken);
+	            	statuslista2 = kb.sökEfterEfterNamn(sokmejl);
+	            	String korv = "";
+	            	String korv2 = "";
+	            	for(Person p : statuslista) {
+	            		korv = p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
+		            	for(Person p2 : statuslista2) {
+		            		korv2 = p2.getFnamn() + " " + p2.getEnamn() + " " + p2.getMejl() + " " + p2.getTel() + "\n";
+		            	}
+	            	}
+            		if(korv.equals(korv2)) {
+            			status += korv;
+            		}
+		            statusLabel.setText(status); 
+		            
+//				Sökning: Telefon och Mejl - FUNKAR INTE!
+	            } else if (sokfn.isEmpty() && soken.isEmpty() && !soktel.isEmpty() && !sokmejl.isEmpty())	{
+	            	statuslista = kb.sökEfterFörNamn(soktel);
+	            	statuslista2 = kb.sökEfterEfterNamn(sokmejl);
+	            	String korv = "";
+	            	String korv2 = "";
+	            	for(Person p : statuslista) {
+	            		korv = p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
+		            	for(Person p2 : statuslista2) {
+		            		korv2 = p2.getFnamn() + " " + p2.getEnamn() + " " + p2.getMejl() + " " + p2.getTel() + "\n";
+		            	}
+	            	}
+            		if(korv.equals(korv2)) {
+            			status += korv;
+            		}
+		            statusLabel.setText(status);  
+		            
+	            }else {
+	            	status += "Ingen träff!";
+	            	statusLabel.setText(status);   
+	            }              
 	    	}
 	    });
 		
@@ -239,10 +303,10 @@ public class Ui implements ItemListener{
 	    sokPanel.add(fornamnInput);
 	    sokPanel.add(efternamnLabel);
 	    sokPanel.add(efternamnInput);
-//	    sokPanel.add(telLabel);
-//	    sokPanel.add(telInput);
-//	    sokPanel.add(mejlLabel);
-//	    sokPanel.add(mejlInput);
+	    sokPanel.add(telLabel);
+	    sokPanel.add(telInput);
+	    sokPanel.add(mejlLabel);
+	    sokPanel.add(mejlInput);
 	    sokPanel.add(sokKnapp);
 
     	return sokPanel;
@@ -276,7 +340,7 @@ public class Ui implements ItemListener{
 	    		laggen = efternamnInput.getText();
 	    		laggtel = telInput.getText();
 	            laggmejl = mejlInput.getText();
-	            System.out.println("korv korv korv" + laggfn + "\t" + laggen + "\t" + laggtel + "\t "+ laggmejl);
+	            System.out.println(laggfn + "\t" + laggen + "\t" + laggtel + "\t "+ laggmejl);
 	            statusLabel.setText("Kontakt har lagts till!");	
 	            kb.läggTill(laggfn, laggen, laggtel, laggmejl);
 	            StringBuilder sb = new StringBuilder();
