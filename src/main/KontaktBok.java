@@ -31,7 +31,11 @@ public class KontaktBok {
 //					System.out.println(KontaktLista.get(i).getFnamn() + str + KontaktLista.get(i).getTel() + KontaktLista.get(i).getMejl());
 				SökLista.add(KontaktLista.get(i));	
 				} 
-			} return SökLista;
+			} 
+			if(SökLista.isEmpty()) {
+				System.out.println("Ingen kontakt hittades!");
+			}
+			return SökLista;
 		}
 		
 		public ArrayList sökEfterEfterNamn(String x) {
@@ -43,7 +47,11 @@ public class KontaktBok {
 //					System.out.println(KontaktLista.get(i).getFnamn() + str + KontaktLista.get(i).getTel() + KontaktLista.get(i).getMejl());
 				SökLista.add(KontaktLista.get(i));	
 				} 
-			} return SökLista;
+			} 
+			if(SökLista.isEmpty()) {
+				System.out.println("Ingen kontakt hittades!");
+			}
+			return SökLista;
 		}
 		
 		public ArrayList sökEfterTelefonNummer(String x) {
@@ -55,7 +63,11 @@ public class KontaktBok {
 //					System.out.println(KontaktLista.get(i).getFnamn() + str + KontaktLista.get(i).getTel() + KontaktLista.get(i).getMejl());
 				SökLista.add(KontaktLista.get(i));	
 				} 
-			} return SökLista;
+			} 
+			if(SökLista.isEmpty()) {
+				System.out.println("Ingen kontakt hittades!");
+			}
+			return SökLista;
 		}		
 		
 		public ArrayList sökEfterMejl(String x) {
@@ -67,7 +79,11 @@ public class KontaktBok {
 //					System.out.println(KontaktLista.get(i).getFnamn() + str + KontaktLista.get(i).getTel() + KontaktLista.get(i).getMejl());
 				SökLista.add(KontaktLista.get(i));	
 				} 
-			} return SökLista;
+			} 
+			if(SökLista.isEmpty()) {
+				System.out.println("Ingen kontakt hittades!");
+			}
+			return SökLista;
 		}
 		
 		public ArrayList<Person> getKontaktLista() {

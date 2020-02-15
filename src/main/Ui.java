@@ -171,23 +171,56 @@ public class Ui implements ItemListener{
 //	            sokmejl = mejlInput.getText();
 //	            System.out.println("korv korv korv " + sokfn + soken + soktel + sokmejl);
  
-//	            Hej hopp! Vid sökning ges rätt kontakt i consolen men statuslabel ger alltid kontakten "Linn..."
 	            String status = "";
 	            ArrayList<Person> statuslista = new ArrayList<Person>();
+	            ArrayList<Person> statuslista2 = new ArrayList<Person>();
 	            
-	            if(!sokfn.isEmpty()) {
+	            if(!sokfn.isEmpty() && soken.isEmpty()) {
 	            	statuslista = kb.sökEfterFörNamn(sokfn);
 	            	for(Person p : statuslista) {
 	            		status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
 	            	}
 	            	statusLabel.setText(status);
-	            	
-	            } else if(!soken.isEmpty()) {
+	            	    	
+	            } else if(sokfn.isEmpty() && !soken.isEmpty()) {
 	            	statuslista = kb.sökEfterEfterNamn(soken);
 	            	for(Person p : statuslista) {
 	            		status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
 	            	}
 	            	statusLabel.setText(status);
+	            
+	            }else if (!sokfn.isEmpty() && !soken.isEmpty())	{
+	            	statuslista = kb.sökEfterFörNamn(sokfn);
+	            	statuslista2 = kb.sökEfterEfterNamn(soken);
+	            	String korv = "";
+	            	String korv2 = "";
+	            	for(Person p : statuslista) {
+	            		korv = p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
+		            	for(Person p2 : statuslista2) {
+		            		korv2 = p2.getFnamn() + " " + p2.getEnamn() + " " + p2.getMejl() + " " + p2.getTel() + "\n";
+		            	}
+	            	}
+            		if(korv.equals(korv2)) {
+            			status += korv;
+            		}
+		            statusLabel.setText(status);
+	            }
+	            
+	            
+//	            if(!sokfn.isEmpty()) {
+//	            	statuslista = kb.sökEfterFörNamn(sokfn);
+//	            	for(Person p : statuslista) {
+//	            		status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
+//	            	}
+//	            	statusLabel.setText(status);
+//	            	
+//	            } else if(!soken.isEmpty()) {
+//	            	statuslista = kb.sökEfterEfterNamn(soken);
+//	            	for(Person p : statuslista) {
+//	            		status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
+//	            	}
+//	            	statusLabel.setText(status);
+//
 //	            	
 //	            } else if(!soktel.isEmpty()) {
 //	            	statuslista = kb.sökEfterTelefonNummer(soktel);
@@ -202,9 +235,10 @@ public class Ui implements ItemListener{
 //	            		status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
 //	            	}
 //	            	statusLabel.setText(status);
-	            } else {
-	            	statusLabel.setText("Nåt har gått fel");
-	            }
+//	            } else {
+//	            	statusLabel.setText("Nåt har gått fel");
+//	            }
+	            
 	            
 	    	}
 	    });
