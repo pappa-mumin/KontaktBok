@@ -4,6 +4,8 @@ public class Person {
 	
 	private String fnamn, enamn, tel, mejl;
 
+	// klassen skapad av Linn
+	
 	public Person(String fnamn, String enamn, String tel, String mejl) {
 		super();
 		this.fnamn = fnamn;

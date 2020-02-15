@@ -24,6 +24,8 @@ import javax.swing.UnsupportedLookAndFeelException;
 
 public class Ui implements ItemListener{
 	
+	//huvudsakligen skriven av Linn
+	
 	final static String FORSTPANEL = "---Vad vill du göra?---";
     final static String LISTAPANEL = "Visa Lista";
     final static String SOKPANEL = "Sök i lista";
@@ -41,6 +43,10 @@ public class Ui implements ItemListener{
     ByggBok bb = new ByggBok();
     Fil fil = new Fil();
 	
+    /**
+     * Metoden lägger till komponenter till en JPanel
+     * @param pane avser panelen som komponenterna ska läggas till i 
+     */
     public void addComponentToPane(Container pane) {
         JPanel comboBoxPane = new JPanel(); 
         String comboBoxItems[] = { FORSTPANEL, LISTAPANEL, SOKPANEL, LAGGTILLPANEL, TABORTPANEL};
@@ -52,7 +58,6 @@ public class Ui implements ItemListener{
 		statusLabel = new JLabel(" ", JLabel.CENTER);
 		statusLabel.setSize(350, 100);
 
-        //Create the "cards".
         JPanel card0 = new JPanel();
         
         JPanel card1 = new JPanel();
@@ -66,8 +71,7 @@ public class Ui implements ItemListener{
         
         JPanel card4 = new JPanel();
         card4.add(taBort());
-         
-        //Create the panel that contains the "cards".
+
         cards = new JPanel(new CardLayout());
         cards.add(card0, FORSTPANEL);
         cards.add(card1, LISTAPANEL);
@@ -80,6 +84,11 @@ public class Ui implements ItemListener{
         pane.add(statusLabel, BorderLayout.PAGE_END); 
 	}
     
+    /**
+     * Metod för att presentera kontaktlistan i det grafiska interfacet
+     * @return en JScrollPane som visar Kontaktlistan
+     * @author Linn och Louise
+     */
     public JScrollPane visaLista() {
 
     	ArrayList<String> listlista = new ArrayList<String>();
@@ -91,24 +100,6 @@ public class Ui implements ItemListener{
     		s += bb.pad(p.getTel(), 25, ' ');
     		s += bb.pad(p.getMejl(), 15, ' ');
     		
-//    		if(p.getFnamn().length() < 5) {
-//    			s += String.format("%-18s", p.getFnamn());
-//    		} else if(p.getFnamn().length() < 10) {
-//    			s += String.format("%-17s", p.getFnamn());
-//    		} else{
-//    			s += String.format("%-13s", p.getFnamn());
-//    		} 
-//    		
-//    		if(p.getEnamn().length() < 5) {
-//    			s += String.format("%-20s", p.getEnamn());
-//    		} else if(p.getEnamn().length() < 10) {
-//    			s += String.format("%-18s", p.getEnamn());
-//    		} else{
-//    			s += String.format("%-16s", p.getEnamn());
-//    		} 
-//    		
-//    		s += String.format("%-25s %15s", p.getMejl(),p.getTel());
-    	
     		listlista.add(s);
     		listlista.sort(null);
     		System.out.println(s);

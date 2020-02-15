@@ -13,7 +13,12 @@ public class LäggTillKontakt {
 	Person pers;
 	ArrayList<Person> lista = new ArrayList<Person>();
 
-	
+	/**
+	 * FilTillLista() läser av rad för rad i kontaktlistan, delar upp raderna vid kommatecknen och lägger in strängarna som 
+	 * objekt i en arraylist. 
+	 * @return en lista av objekt av typen person
+	 * @author Oscar
+	 */
 	public ArrayList<Person> FilTillLista() {
 	try {
 		s = new Scanner( new File("KontaktLista.txt"));
