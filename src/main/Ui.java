@@ -24,6 +24,8 @@ import javax.swing.UnsupportedLookAndFeelException;
 
 public class Ui implements ItemListener{
 	
+	//huvudsakligen skriven av Linn
+	
 	final static String FORSTPANEL = "---Vad vill du göra?---";
     final static String LISTAPANEL = "Visa Lista";
     final static String SOKPANEL = "Sök i lista";
@@ -41,6 +43,10 @@ public class Ui implements ItemListener{
     ByggBok bb = new ByggBok();
     Fil fil = new Fil();
 	
+    /**
+     * Metoden lägger till komponenter till en JPanel
+     * @param pane avser panelen som komponenterna ska läggas till i 
+     */
     public void addComponentToPane(Container pane) {
         JPanel comboBoxPane = new JPanel(); 
         String comboBoxItems[] = { FORSTPANEL, LISTAPANEL, SOKPANEL, LAGGTILLPANEL, TABORTPANEL};
@@ -52,7 +58,6 @@ public class Ui implements ItemListener{
 		statusLabel = new JLabel(" ", JLabel.CENTER);
 		statusLabel.setSize(350, 100);
 
-        //Create the "cards".
         JPanel card0 = new JPanel();
         
         JPanel card1 = new JPanel();
@@ -66,8 +71,7 @@ public class Ui implements ItemListener{
         
         JPanel card4 = new JPanel();
         card4.add(taBort());
-         
-        //Create the panel that contains the "cards".
+
         cards = new JPanel(new CardLayout());
         cards.add(card0, FORSTPANEL);
         cards.add(card1, LISTAPANEL);
@@ -80,35 +84,22 @@ public class Ui implements ItemListener{
         pane.add(statusLabel, BorderLayout.PAGE_END); 
 	}
     
+    /**
+     * Metod för att presentera kontaktlistan i det grafiska interfacet
+     * @return en JScrollPane som visar Kontaktlistan
+     * @author Linn och Louise
+     */
     public JScrollPane visaLista() {
 
     	ArrayList<String> listlista = new ArrayList<String>();
     	String s = "";
     	for(Person p : kb.KontaktLista) {
     		s = "";
-    		s += bb.pad(p.getEnamn(), 25, ' ');
-    		s += bb.pad(p.getFnamn(), 20, ' ');
-    		s += bb.pad(p.getMejl(), 25, ' ');
-    		s += bb.pad(p.getTel(), 15, ' ');
+    		s += bb.pad(p.getFnamn(), 25, ' ');
+    		s += bb.pad(p.getEnamn(), 20, ' ');
+    		s += bb.pad(p.getTel(), 25, ' ');
+    		s += bb.pad(p.getMejl(), 15, ' ');
     		
-//    		if(p.getFnamn().length() < 5) {
-//    			s += String.format("%-18s", p.getFnamn());
-//    		} else if(p.getFnamn().length() < 10) {
-//    			s += String.format("%-17s", p.getFnamn());
-//    		} else{
-//    			s += String.format("%-13s", p.getFnamn());
-//    		} 
-//    		
-//    		if(p.getEnamn().length() < 5) {
-//    			s += String.format("%-20s", p.getEnamn());
-//    		} else if(p.getEnamn().length() < 10) {
-//    			s += String.format("%-18s", p.getEnamn());
-//    		} else{
-//    			s += String.format("%-16s", p.getEnamn());
-//    		} 
-//    		
-//    		s += String.format("%-25s %15s", p.getMejl(),p.getTel());
-    	
     		listlista.add(s);
     		listlista.sort(null);
     		System.out.println(s);
@@ -172,7 +163,7 @@ public class Ui implements ItemListener{
 	            
 //	            Sökning: endast inmatning av Telefonnummer - FUNKAR INTE!
 	            } else if(sokfn.isEmpty() && soken.isEmpty() && !soktel.isEmpty() && sokmejl.isEmpty()) {
-	            	statuslista = kb.sökEfterEfterNamn(soktel);
+	            	statuslista = kb.sökEfterTelefonNummer(soktel);
 	            	for(Person p : statuslista) {
 	            		status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
 	            	}
@@ -180,7 +171,7 @@ public class Ui implements ItemListener{
 	            
 //		        Sökning: endast inmatning av Telefonnummer - FUNKAR INTE!
 		        } else if(sokfn.isEmpty() && soken.isEmpty() && soktel.isEmpty() && !sokmejl.isEmpty()) {
-		          	statuslista = kb.sökEfterEfterNamn(sokmejl);
+		          	statuslista = kb.sökEfterMejl(sokmejl);
 		           	for(Person p : statuslista) {
 		           		status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
 	            	}
@@ -208,7 +199,7 @@ public class Ui implements ItemListener{
 //		        Sökning: Förnamn och Telefonnummer -FUNKAR INTE!
 	            } else if (!sokfn.isEmpty() && soken.isEmpty() && !soktel.isEmpty() && sokmejl.isEmpty())	{
 	            	statuslista = kb.sökEfterFörNamn(sokfn);
-	            	statuslista2 = kb.sökEfterEfterNamn(soktel);
+	            	statuslista2 = kb.sökEfterTelefonNummer(soktel);
 	            	String korv = "";
 	            	String korv2 = "";
 	            	for(Person p : statuslista) {
@@ -227,7 +218,7 @@ public class Ui implements ItemListener{
 //			    Sökning: Förnamn och Mejl -FUNKAR INTE!
 	            } else if (!sokfn.isEmpty() && soken.isEmpty() && soktel.isEmpty() && !sokmejl.isEmpty())	{
 	            	statuslista = kb.sökEfterFörNamn(sokfn);
-	            	statuslista2 = kb.sökEfterEfterNamn(sokmejl);
+	            	statuslista2 = kb.sökEfterMejl(sokmejl);
 	            	String korv = "";
 	            	String korv2 = "";
 	            	for(Person p : statuslista) {
@@ -243,8 +234,8 @@ public class Ui implements ItemListener{
 		        
 //				Sökning: Efternamn och Telefon - FUNKAR INTE!
 	            } else if (sokfn.isEmpty() && !soken.isEmpty() && !soktel.isEmpty() && sokmejl.isEmpty())	{
-	            	statuslista = kb.sökEfterFörNamn(soken);
-	            	statuslista2 = kb.sökEfterEfterNamn(soktel);
+	            	statuslista = kb.sökEfterEfterNamn(soken);
+	            	statuslista2 = kb.sökEfterTelefonNummer(soktel);
 	            	String korv = "";
 	            	String korv2 = "";
 	            	for(Person p : statuslista) {
@@ -260,8 +251,8 @@ public class Ui implements ItemListener{
 		         
 //				Sökning: Efternamn och Mejl - FUNKAR INTE!
 	            } else if (sokfn.isEmpty() && !soken.isEmpty() && soktel.isEmpty() && !sokmejl.isEmpty())	{
-	            	statuslista = kb.sökEfterFörNamn(soken);
-	            	statuslista2 = kb.sökEfterEfterNamn(sokmejl);
+	            	statuslista = kb.sökEfterEfterNamn(soken);
+	            	statuslista2 = kb.sökEfterMejl(sokmejl);
 	            	String korv = "";
 	            	String korv2 = "";
 	            	for(Person p : statuslista) {
@@ -277,8 +268,8 @@ public class Ui implements ItemListener{
 		            
 //				Sökning: Telefon och Mejl - FUNKAR INTE!
 	            } else if (sokfn.isEmpty() && soken.isEmpty() && !soktel.isEmpty() && !sokmejl.isEmpty())	{
-	            	statuslista = kb.sökEfterFörNamn(soktel);
-	            	statuslista2 = kb.sökEfterEfterNamn(sokmejl);
+	            	statuslista = kb.sökEfterTelefonNummer(soktel);
+	            	statuslista2 = kb.sökEfterMejl(sokmejl);
 	            	String korv = "";
 	            	String korv2 = "";
 	            	for(Person p : statuslista) {

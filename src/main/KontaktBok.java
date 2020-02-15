@@ -41,6 +41,13 @@ public class KontaktBok {
 			KontaktLista.add(x);
 		}
 		
+		/**
+		 * sökEfterFörNamn() tar en söksträng och letar efter motsvarande i kontaktlistan. Objekt som matchar sökningen
+		 * läggs till i en ny arraylist som returneras. 
+		 * @param x är strängen som ska sökas efter i kontaktlistan
+		 * @return är en arraylist med objekt som matchar sökningen
+		 * @author Oscar
+		 */
 		public ArrayList<Person> sökEfterFörNamn(String x) {
 			int y = 0;
 			for(int i = 0; i < KontaktLista.size(); i++) {
@@ -57,6 +64,13 @@ public class KontaktBok {
 			return SökLista;
 		}
 		
+		/**
+		 * sökEfterEfterNamn() tar en söksträng och letar efter motsvarande i kontaktlistan. Objekt som matchar sökningen
+		 * läggs till i en ny arraylist som returneras. 
+		 * @param x är strängen som ska sökas efter i kontaktlistan
+		 * @return är en arraylist med objekt som matchar sökningen
+		 * @author Oscar
+		 */
 		public ArrayList<Person> sökEfterEfterNamn(String x) {
 			int y = 0;
 			for(int i = 0; i < KontaktLista.size(); i++) {
@@ -73,6 +87,13 @@ public class KontaktBok {
 			return SökLista;
 		}
 		
+		/**
+		 * sökEfterTelefonNummer() tar en söksträng och letar efter motsvarande i kontaktlistan. Objekt som matchar sökningen
+		 * läggs till i en ny arraylist som returneras. 
+		 * @param x är strängen som ska sökas efter i kontaktlistan
+		 * @return är en arraylist med objekt som matchar sökningen
+		 * @author Oscar
+		 */
 		public ArrayList<Person> sökEfterTelefonNummer(String x) {
 			int y = 0;
 			for(int i = 0; i < KontaktLista.size(); i++) {
@@ -89,6 +110,13 @@ public class KontaktBok {
 			return SökLista;
 		}		
 		
+		/**
+		 * sökEfterMejl() tar en söksträng och letar efter motsvarande i kontaktlistan. Objekt som matchar sökningen
+		 * läggs till i en ny arraylist som returneras. 
+		 * @param x är strängen som ska sökas efter i kontaktlistan
+		 * @return är en arraylist med objekt som matchar sökningen
+		 * @author Oscar
+		 */
 		public ArrayList<Person> sökEfterMejl(String x) {
 			int y = 0;
 			for(int i = 0; i < KontaktLista.size(); i++) {
