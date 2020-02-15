@@ -57,7 +57,7 @@ public class Ui implements ItemListener{
         
         JPanel card1 = new JPanel();
         card1.add(visaLista());
-         
+        
         JPanel card2 = new JPanel();
         card2.add(sokning());
         
