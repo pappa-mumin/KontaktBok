@@ -24,7 +24,10 @@ import javax.swing.UnsupportedLookAndFeelException;
 
 public class Ui implements ItemListener{
 	
-	//huvudsakligen skriven av Linn
+    /**
+     * Deklarerar instansvariabler, klassvariabler och statiskta variabler
+     * @author Linn
+     */
 	
 	final static String FORSTPANEL = "---Vad vill du göra?---";
     final static String LISTAPANEL = "Visa Lista";
@@ -46,6 +49,7 @@ public class Ui implements ItemListener{
     /**
      * Metoden lägger till komponenter till en JPanel
      * @param pane avser panelen som komponenterna ska läggas till i 
+     * @author Linn
      */
     public void addComponentToPane(Container pane) {
         JPanel comboBoxPane = new JPanel(); 
@@ -86,7 +90,7 @@ public class Ui implements ItemListener{
     
     /**
      * Metod för att presentera kontaktlistan i det grafiska interfacet
-     * @return en JScrollPane som visar Kontaktlistan
+     * @return en JPanel med JLabels och JTextfields som visar Kontaktlistan
      * @author Linn och Louise
      */
     public JScrollPane visaLista() {
@@ -112,6 +116,12 @@ public class Ui implements ItemListener{
     	return scrollPane;
     }
     
+    
+    /**
+     * Metod för att söka i kontaktlistan för det grafiska interfacet
+     * @return en JScrollPane som visar Kontaktlistan
+     * @author Linn och ???
+     */
     public JPanel sokning() {
     	sokPanel = new JPanel();
     	GridLayout gl = new GridLayout(5,1); 
@@ -144,7 +154,10 @@ public class Ui implements ItemListener{
 	            String status = "";
 	            ArrayList<Person> statuslista = new ArrayList<Person>();
 	            
-//	            Sökning: Förnamn
+	            /**
+	             * Sökning av förnamn
+	             * @author Linn
+	             */
 	            if(!sokfn.isEmpty() && soken.isEmpty() && soktel.isEmpty() && sokmejl.isEmpty()) {
 //	            	statuslista = kb.sökEfterFörNamn(sokfn);
 //	            	for(Person p : statuslista) {
@@ -156,14 +169,18 @@ public class Ui implements ItemListener{
 	            	for (Person p: kb.KontaktLista) {
 	            		if(sokfn.equalsIgnoreCase(p.getFnamn())) {
 	            			status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
+
 	            		}
 	            	}
 	            	if(status == "") {
 	            		status += "Du har sökt på en kontakt som inte finns";
 	            	}
 	            	statusLabel.setText(status);
-	            
-//	            Sökning: Efternamn
+	            	
+		            /**
+		             * Sökning av Efternamn
+		             * @author Linn
+		             */
 	            } else if(sokfn.isEmpty() && !soken.isEmpty() && soktel.isEmpty() && sokmejl.isEmpty()) {
 //	            	statuslista = kb.sökEfterEfterNamn(soken);
 //	            	for(Person p : statuslista) {
@@ -182,7 +199,10 @@ public class Ui implements ItemListener{
 	            	}
 	            	statusLabel.setText(status);
 	            
-//	            Sökning: Telefonnummer
+		            /**
+		             * Sökning av Telefonnummer
+		             * @author Linn
+		             */
 	            } else if(sokfn.isEmpty() && soken.isEmpty() && !soktel.isEmpty() && sokmejl.isEmpty()) {
 //	            	statuslista = kb.sökEfterTelefonNummer(soktel);
 //	            	for(Person p : statuslista) {
@@ -201,7 +221,10 @@ public class Ui implements ItemListener{
 	            	}
 	            	statusLabel.setText(status);	
 	            
-//		        Sökning: Mejl
+		            /**
+		             * Sökning av Mejl
+		             * @author Linn
+		             */
 		        } else if(sokfn.isEmpty() && soken.isEmpty() && soktel.isEmpty() && !sokmejl.isEmpty()) {
 //		          	statuslista = kb.sökEfterMejl(sokmejl);
 //		           	for(Person p : statuslista) {
@@ -220,7 +243,10 @@ public class Ui implements ItemListener{
 	            	}
 	            	statusLabel.setText(status);		
 	            
-//	            Sökning: Förnamn och Efternamn 
+		            /**
+		             * Sökning av Förnamn och Efternamn
+		             * @author Linn
+		             */
 	            }else if (!sokfn.isEmpty() && !soken.isEmpty() && soktel.isEmpty() && sokmejl.isEmpty())	{
 	            	for (Person p: kb.KontaktLista) {
 	            		if(sokfn.equalsIgnoreCase(p.getFnamn()) && soken.equalsIgnoreCase(p.getEnamn())) {
@@ -232,7 +258,10 @@ public class Ui implements ItemListener{
 	            	}
 	            	statusLabel.setText(status);		            
 	            
-//		        Sökning: Förnamn och Telefonnummer
+		            /**
+		             * Sökning av Förnamn och Telefonnummer
+		             * @author Linn
+		             */
 	            } else if (!sokfn.isEmpty() && soken.isEmpty() && !soktel.isEmpty() && sokmejl.isEmpty())	{
 	            	for (Person p: kb.KontaktLista) {
 	            		if(sokfn.equalsIgnoreCase(p.getFnamn()) && soktel.equalsIgnoreCase(p.getTel())) {
@@ -244,7 +273,10 @@ public class Ui implements ItemListener{
 	            	}
 		            statusLabel.setText(status);
 		       
-//			    Sökning: Förnamn och Mejl 
+		            /**
+		             * Sökning av Förnamn och Mejl
+		             * @author Linn
+		             */
 	            } else if (!sokfn.isEmpty() && soken.isEmpty() && soktel.isEmpty() && !sokmejl.isEmpty())	{
 	            	for (Person p: kb.KontaktLista) {
 	            		if(sokfn.equalsIgnoreCase(p.getFnamn()) && sokmejl.equalsIgnoreCase(p.getMejl())) {
@@ -256,7 +288,10 @@ public class Ui implements ItemListener{
 	            	}
 		            statusLabel.setText(status);
 		        
-//				Sökning: Efternamn och Telefon
+		            /**
+		             * Sökning av Efternamn och Telefon
+		             * @author Linn
+		             */
 	            } else if (sokfn.isEmpty() && !soken.isEmpty() && !soktel.isEmpty() && sokmejl.isEmpty())	{
 	            	for (Person p: kb.KontaktLista) {
 	            		if(soken.equalsIgnoreCase(p.getEnamn()) && soktel.equalsIgnoreCase(p.getMejl())) {
@@ -268,7 +303,10 @@ public class Ui implements ItemListener{
 	            	}
 		            statusLabel.setText(status);
 		         
-//				Sökning: Efternamn och Mejl
+		            /**
+		             * Sökning av Efternamn och Mejl
+		             * @author Linn
+		             */
 	            } else if (sokfn.isEmpty() && !soken.isEmpty() && soktel.isEmpty() && !sokmejl.isEmpty())	{
 	            	for (Person p: kb.KontaktLista) {
 	            		if(soken.equalsIgnoreCase(p.getEnamn()) && sokmejl.equalsIgnoreCase(p.getMejl())) {
@@ -279,8 +317,11 @@ public class Ui implements ItemListener{
 	            		status += "Du har sökt på en kontakt som inte finns";
 	            	}
 		            statusLabel.setText(status); 
-		            
-//				Sökning: Telefon och Mejl
+		         
+		            /**
+		             * Sökning av Telefon och Mejl
+		             * @author Linn
+		             */
 	            } else if (sokfn.isEmpty() && soken.isEmpty() && !soktel.isEmpty() && !sokmejl.isEmpty())	{
 	            	for (Person p: kb.KontaktLista) {
 	            		if(soktel.equalsIgnoreCase(p.getTel()) && sokmejl.equalsIgnoreCase(p.getMejl())) {
@@ -292,7 +333,10 @@ public class Ui implements ItemListener{
 	            	}
 		            statusLabel.setText(status);  
 		        
-//					Sökning: Förnamn, Efternamn och Telefon
+		            /**
+		             * Sökning av Förnamn, Efternamn och Telefon
+		             * @author Linn
+		             */
 	            }else if (!sokfn.isEmpty() && !soken.isEmpty() && !soktel.isEmpty() && sokmejl.isEmpty())	{
 	            	for (Person p: kb.KontaktLista) {
 	            		if(sokfn.equalsIgnoreCase(p.getFnamn()) && soken.equalsIgnoreCase(p.getEnamn()) && soktel.equalsIgnoreCase(p.getTel())) {
@@ -304,7 +348,10 @@ public class Ui implements ItemListener{
 	            	}
 	            	statusLabel.setText(status);
 	            	
-//					Sökning: Förnamn, Efternamn och Mejl
+		            /**
+		             * Sökning av Förnamn, Efternamn och Mejl
+		             * @author Linn
+		             */
 	            }else if (!sokfn.isEmpty() && !soken.isEmpty() && soktel.isEmpty() && !sokmejl.isEmpty())	{
 	            	for (Person p: kb.KontaktLista) {
 	            		if(sokfn.equalsIgnoreCase(p.getFnamn()) && soken.equalsIgnoreCase(p.getEnamn()) && sokmejl.equalsIgnoreCase(p.getMejl())) {
@@ -313,7 +360,10 @@ public class Ui implements ItemListener{
 	            	}
 	            	statusLabel.setText(status);
 
-//					Sökning: Förnamn, Telefon och Mejl
+		            /**
+		             * Sökning av Förnamn, Telefon och Mejl
+		             * @author Linn
+		             */
 	            } else if (!sokfn.isEmpty() && soken.isEmpty() && !soktel.isEmpty() && !sokmejl.isEmpty())	{
 	            	for (Person p: kb.KontaktLista) {
 	            		if(sokfn.equalsIgnoreCase(p.getFnamn()) && soktel.equalsIgnoreCase(p.getTel()) && sokmejl.equalsIgnoreCase(p.getMejl())) {
@@ -325,7 +375,10 @@ public class Ui implements ItemListener{
 	            	}
 		            statusLabel.setText(status); 
 		            
-//					Sökning: Efternamn, Telefon och Mejl
+		            /**
+		             * Sökning av Efternamn, Telefon och Mejl
+		             * @author Linn
+		             */
 	            } else if (sokfn.isEmpty() && !soken.isEmpty() && !soktel.isEmpty() && !sokmejl.isEmpty())	{
 	            	for (Person p: kb.KontaktLista) {
 	            		if(soken.equalsIgnoreCase(p.getEnamn()) && soktel.equalsIgnoreCase(p.getTel()) && sokmejl.equalsIgnoreCase(p.getMejl())) {
@@ -337,7 +390,10 @@ public class Ui implements ItemListener{
 	            	}
 		            statusLabel.setText(status); 
 		            
-//					Sökning: Förnamn, Efternamn, Telefon och Mejl
+		            /**
+		             * Sökning av Förnamn, Efternamn, Telefon och Mejl
+		             * @author Linn
+		             */
 	            } else if (!sokfn.isEmpty() && !soken.isEmpty() && !soktel.isEmpty() && !sokmejl.isEmpty())	{
 	            	for (Person p: kb.KontaktLista) {
 	            		if(sokfn.equalsIgnoreCase(p.getFnamn()) && soken.equalsIgnoreCase(p.getEnamn()) && soktel.equalsIgnoreCase(p.getTel()) && sokmejl.equalsIgnoreCase(p.getMejl())) {
@@ -365,9 +421,14 @@ public class Ui implements ItemListener{
 	    sokPanel.add(mejlLabel);
 	    sokPanel.add(mejlInput);
 	    sokPanel.add(sokKnapp);
-
     	return sokPanel;
     }
+    
+    /**
+     * Metod för att lägga till kontakt i kontaktlistan i det grafiska interfacet
+     * @return en JPanel med JLabels och JTextfields
+     * @author Linn och Louise
+     */
     
     public JPanel laggTill() {
     	laggTillPanel = new JPanel();
@@ -415,10 +476,14 @@ public class Ui implements ItemListener{
 	    laggTillPanel.add(mejlLabel);
 	    laggTillPanel.add(mejlInput);
 	    laggTillPanel.add(laggTillKnapp);
-
     	return laggTillPanel;
     }
     
+    /**
+     * Metod för att ta bort kontakt i kontaktlistan i det grafiska interfacet
+     * @return en JPanel med JLabels och JTextfields, ÄNDRAS??? 
+     * @author Linn och Louise
+     */
     public JPanel taBort() {
     	taBortPanel = new JPanel();
     	GridLayout gl = new GridLayout(5,1); 
@@ -461,38 +526,41 @@ public class Ui implements ItemListener{
 	    taBortPanel.add(mejlLabel);
 	    taBortPanel.add(mejlInput);
 	    taBortPanel.add(taBortKnapp);
-
     	return taBortPanel;
     }
-
+    
+    /**
+     * Metod för att visning av cards i rullistan
+     * @author Linn
+     */
     public void itemStateChanged(ItemEvent evt) {
         CardLayout cl = (CardLayout)(cards.getLayout());
         cl.show(cards, (String)evt.getItem());
     }
-     
+       
     /**
-     * Create the GUI and show it.  For thread safety,
-     * this method should be invoked from the
-     * event dispatch thread.
+     * Metod skapar själva Jframefönstret och visar det. Metoden anropas i main.
+     * @author Linn
      */
-    private static void createAndShowGUI() {
-        //Create and set up the window.
+    static void skaparOchVisarGUI() {
+
         JFrame frame = new JFrame("KONTAKTBOK");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
          
-        //Create and set up the content pane.
-        Ui demo = new Ui();
-        demo.addComponentToPane(frame.getContentPane());
+        Ui gui = new Ui();
+        gui.addComponentToPane(frame.getContentPane());
          
-        //Display the window.
         frame.pack();
         frame.setVisible(true);
     }
      
-    public static void skapaUI() {
-        /* Use an appropriate Look and Feel */
+    /**
+     * Metod skapar GUI.
+     * @author Linn
+     */
+    public static void skaparGUI() {
+
         try {
-            //UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
             UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
         } catch (UnsupportedLookAndFeelException ex) {
             ex.printStackTrace();
@@ -503,14 +571,12 @@ public class Ui implements ItemListener{
         } catch (ClassNotFoundException ex) {
             ex.printStackTrace();
         }
-        /* Turn off metal's use of bold fonts */
+        
         UIManager.put("swing.boldMetal", Boolean.FALSE);
          
-        //Schedule a job for the event dispatch thread:
-        //creating and showing this application's GUI.
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                createAndShowGUI();
+                skaparOchVisarGUI();
             }
         });  
     }
