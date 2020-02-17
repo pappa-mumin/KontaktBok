@@ -36,7 +36,6 @@ public class Fil {
 	 * @author Louise
 	 */
 	public void skapaFil(StringBuilder text) {
-//		this.filNamn = filNamn;
 		this.text = text;
 		try (PrintStream out = new PrintStream(new FileOutputStream(filNamn))){	
 		out.print(text);
