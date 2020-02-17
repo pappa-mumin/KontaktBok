@@ -14,24 +14,25 @@ import main.Person;
 class ByggBokTest {
 	
 	private StringBuilder sb = new StringBuilder();
-	private ByggBok bb;
-	ArrayList<Person> testLista = new ArrayList<Person>();
+	private ByggBok bb = new ByggBok();
+	private KontaktBok kb = new KontaktBok();
+	ArrayList<Person> lista = new ArrayList<Person>();
 	Person testPerson;
 	
 	@BeforeEach
 	void läggTillPersonIArray() {
 		testPerson = new Person("Förnamn", "Efternamn", "Telefonnummer", "Mejl");
-		testLista.add(testPerson);
+		lista.add(testPerson);
 	}
 
-//	@Test
-//	void skapaTextTest() {
-//		System.out.println(bb.skapaText(testLista));
-//		StringBuilder strbr = new StringBuilder();
-////		strbr.append(testLista.get(0).getFnamn() + "," + testLista.get(0).getEnamn() + "," + 
-////				testLista.get(0).getMejl()+ "," + testLista.get(0).getTel() + "\n");
-//		assertEquals(bb.skapaText(testLista), strbr);
-//	}
+	@Test
+	void skapaTextTest() {
+		String sb = bb.skapaText(lista).toString();
+		String str = lista.get(0).getFnamn() + "," + lista.get(0).getEnamn() + "," + 
+				lista.get(0).getMejl()+ "," + lista.get(0).getTel() + "\n";
+
+		assertEquals(sb, str);
+	}
 
 
 
