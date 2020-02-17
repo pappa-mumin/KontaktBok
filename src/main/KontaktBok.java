@@ -24,9 +24,8 @@ public class KontaktBok {
 		 * @return 
 		 * @author Oscar
 		 */
-		public ArrayList<Person> taBort(int i) {
+		public void taBort(int i) {
 		KontaktLista.remove(i);
-			return KontaktLista;
 		}
 		
 		/** 
