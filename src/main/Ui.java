@@ -482,10 +482,6 @@ public class Ui implements ItemListener{
 		
     	JButton taBortKnapp = new JButton("Ta bort");
 
-//    	ListSelectionListener listSelectionListener = new ListSelectionListener() {
-//    	      public void valueChanged(ListSelectionEvent listSelectionEvent) {
-//    	    	  
-//    	      }
     	ListSelectionModel listSelectionModel = list.getSelectionModel();
     	
     	listSelectionModel.addListSelectionListener(new ListSelectionListener() {
