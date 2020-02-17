@@ -19,7 +19,7 @@ public class ByggBok {
 		this.lista = lista;
 		for(int i = 0; i < lista.size(); i++) {
 			sb.append(lista.get(i).getFnamn() + "," + lista.get(i).getEnamn() + "," + 
-					lista.get(i).getMejl()+ "," + lista.get(i).getTel() + "\n");
+					lista.get(i).getTel()+ "," + lista.get(i).getMejl() + "\n");
 		}
 		return sb;
 	}
