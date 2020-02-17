@@ -3,6 +3,7 @@ package main;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Container;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -455,49 +456,9 @@ public class Ui implements ItemListener{
      * @return en JPanel med JLabels och JTextfields, ÄNDRAS??? 
      * @author Linn och Louise
      */
-    public JScrollPane taBort() {
-//    	taBortPanel = new JPanel();
-//    	GridLayout gl = new GridLayout(5,1); 
-//    	taBortPanel.setLayout(gl);
-//    	JButton taBortKnapp = new JButton("Ta bort");
-//	    
-//		JLabel fornamnLabel = new JLabel("Förnamn: ");
-//		JTextField fornamnInput = new JTextField(30);
-//		JLabel efternamnLabel = new JLabel("Efternamn: ");
-//		JTextField efternamnInput = new JTextField(30);
-//	    JLabel telLabel = new JLabel("Telefonnummer: ");
-//	    JTextField telInput = new JTextField(30);		    
-//	    JLabel mejlLabel = new JLabel("Mejladress: ");
-//	    JTextField mejlInput = new JTextField(30);;		    
-//	    
-//	    fornamnInput.setText("");
-//		efternamnInput.setText("");
-//	    telInput.setText("");
-//	    mejlInput.setText("");
-//	    
-//	    taBortKnapp.setActionCommand("Ta bort");
-//	    
-//	    taBortKnapp.addActionListener(new ActionListener() {
-//	    	public void actionPerformed(ActionEvent e) {
-//	    		bortfn = fornamnInput.getText();		   
-//	    		borten = efternamnInput.getText();
-//	    		borttel = telInput.getText();
-//	            bortmejl = mejlInput.getText();
-//	            System.out.println("korv korv korv" + bortfn + borten + borttel + bortmejl);
-//	            statusLabel.setText("Kontakt har hittats och tagits bort!");	
-//	    	}
-//	    });
-//	    
-//	    taBortPanel.add(fornamnLabel);
-//	    taBortPanel.add(fornamnInput);
-//	    taBortPanel.add(efternamnLabel);
-//	    taBortPanel.add(efternamnInput);
-//	    taBortPanel.add(telLabel);
-//	    taBortPanel.add(telInput);
-//	    taBortPanel.add(mejlLabel);
-//	    taBortPanel.add(mejlInput);
-//	    taBortPanel.add(taBortKnapp);
-//    	return taBortPanel;
+    public JPanel taBort() {
+    	taBortPanel = new JPanel();
+
     	ArrayList<String> listlista = new ArrayList<String>();
     	String s = "";
     	for(Person p : kb.KontaktLista) {
@@ -515,8 +476,34 @@ public class Ui implements ItemListener{
 		JList<String> list = new JList(listlista.toArray());
 		list.setLayoutOrientation(JList.VERTICAL);
 		scrollPane = new JScrollPane(list);
+		
+    	JButton taBortKnapp = new JButton("Ta bort");
 
-    	return scrollPane;
+//    	ListSelectionListener listSelectionListener = new ListSelectionListener() {
+//    	      public void valueChanged(ListSelectionEvent listSelectionEvent) {
+//    	    	  
+//    	      }
+//    	listSelectionModel.addListSelectionListener(new ListSelectionListener() {
+//    		public void valueChanged(ListSelectionEvent e) {
+//    			bb.pad(p.getFnamn()
+//    					kb.KontaktLista
+//    		}
+//    	});
+	    
+	    taBortKnapp.addActionListener(new ActionListener() {
+	    	public void actionPerformed(ActionEvent e) {
+	    		bortfn = fornamnInput.getText();		   
+	    		borten = efternamnInput.getText();
+	    		borttel = telInput.getText();
+	            bortmejl = mejlInput.getText();
+	            System.out.println("korv korv korv" + bortfn + borten + borttel + bortmejl);
+	            statusLabel.setText("Kontakt har hittats och tagits bort!");	
+	    	}
+	    });
+
+	    taBortPanel.add(scrollPane);
+	    taBortPanel.add(taBortKnapp);
+    	return taBortPanel;
     }
     
     /**
