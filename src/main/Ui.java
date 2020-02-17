@@ -120,7 +120,7 @@ public class Ui implements ItemListener{
     /**
      * Metod för att söka i kontaktlistan för det grafiska interfacet
      * @return en JScrollPane som visar Kontaktlistan
-     * @author Linn och ???
+     * @author Linn och Louise
      */
     public JPanel sokning() {
     	sokPanel = new JPanel();
@@ -555,7 +555,7 @@ public class Ui implements ItemListener{
     }
      
     /**
-     * Metod skapar GUI.
+     * Metod som skapar GUI.
      * @author Linn
      */
     public static void skaparGUI() {
