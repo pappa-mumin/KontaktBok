@@ -19,8 +19,11 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 
 public class Ui implements ItemListener{
@@ -483,24 +486,20 @@ public class Ui implements ItemListener{
 //    	      public void valueChanged(ListSelectionEvent listSelectionEvent) {
 //    	    	  
 //    	      }
-//    	listSelectionModel.addListSelectionListener(new ListSelectionListener() {
-//    		public void valueChanged(ListSelectionEvent e) {
-//    			bb.pad(p.getFnamn()
-//    					kb.KontaktLista
-//    		}
-//    	});
+    	ListSelectionModel listSelectionModel = list.getSelectionModel();
+    	
+    	listSelectionModel.addListSelectionListener(new ListSelectionListener() {
+    		public void valueChanged(ListSelectionEvent e) {
+    		    taBortKnapp.addActionListener(new ActionListener() {
+    		    	public void actionPerformed(ActionEvent e) {
+    		    		int i = listSelectionModel.getAnchorSelectionIndex();
+    		    		kb.taBort(i);
+    		    		statusLabel.setText("Kontakt har tagits bort!"); 
+    		    	}
+    		    });
+    		}
+    	});
 	    
-	    taBortKnapp.addActionListener(new ActionListener() {
-	    	public void actionPerformed(ActionEvent e) {
-	    		bortfn = fornamnInput.getText();		   
-	    		borten = efternamnInput.getText();
-	    		borttel = telInput.getText();
-	            bortmejl = mejlInput.getText();
-	            System.out.println("korv korv korv" + bortfn + borten + borttel + bortmejl);
-	            statusLabel.setText("Kontakt har hittats och tagits bort!");	
-	    	}
-	    });
-
 	    taBortPanel.add(scrollPane);
 	    taBortPanel.add(taBortKnapp);
     	return taBortPanel;
