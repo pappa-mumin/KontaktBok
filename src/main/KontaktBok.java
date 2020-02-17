@@ -123,7 +123,6 @@ public class KontaktBok {
 				String str = KontaktLista.get(i).getMejl();
 				y++;
 				if(str.contains(x)) {
-//					System.out.println(KontaktLista.get(i).getFnamn() + str + KontaktLista.get(i).getTel() + KontaktLista.get(i).getMejl());
 				SökLista.add(KontaktLista.get(i));	
 				} 
 			} 
