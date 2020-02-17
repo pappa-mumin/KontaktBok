@@ -16,7 +16,6 @@ class KontaktBokTest {
 	private KontaktBok konBok;
 	private Person testPerson;
 
-
 	@BeforeEach
 	void nyKontaktBok() {
 		konBok = new KontaktBok();
