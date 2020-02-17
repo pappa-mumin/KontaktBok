@@ -73,7 +73,24 @@ class KontaktBokTest {
 	
 	@Test
 	void sökEfterTelefonNummerTest() {
+		ArrayList<Person> hjälp = new ArrayList<Person>();
+		Person tp = new Person("Är ", "Mitt ","FörNamn ", "här?");
+		hjälp.add(tp);
+		konBok.getKontaktLista().add(tp);
+		ArrayList<Person> sl = konBok.sökEfterTelefonNummer("FörNamn ");
 		
+		assertEquals(sl.get(0), hjälp.get(0));
+	}
+	
+	@Test
+	void sökEfterMejlTest() {
+		ArrayList<Person> hjälp = new ArrayList<Person>();
+		Person tp = new Person("Är ", "Mitt ","FörNamn ", "här?");
+		hjälp.add(tp);
+		konBok.getKontaktLista().add(tp);
+		ArrayList<Person> sl = konBok.sökEfterMejl("här?");
+		
+		assertEquals(sl.get(0), hjälp.get(0));
 	}
 	
 }

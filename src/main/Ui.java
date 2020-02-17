@@ -160,7 +160,7 @@ public class Ui implements ItemListener{
 	            if(!sokfn.isEmpty() && soken.isEmpty() && soktel.isEmpty() && sokmejl.isEmpty()) {
 	            	for (Person p: kb.KontaktLista) {
 	            		if(sokfn.equalsIgnoreCase(p.getFnamn())) {
-	            			status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
+	            			status += p.getFnamn() + " " + p.getEnamn() + " " + p.getTel() + " " + p.getMejl() + "\n";
 
 	            		}
 	            	}
@@ -176,7 +176,7 @@ public class Ui implements ItemListener{
 	            } else if(sokfn.isEmpty() && !soken.isEmpty() && soktel.isEmpty() && sokmejl.isEmpty()) {
 	            	for (Person p: kb.KontaktLista) {
 	            		if(soken.equalsIgnoreCase(p.getEnamn())) {
-	            			status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
+	            			status += p.getFnamn() + " " + p.getEnamn() + " " + p.getTel() + " " + p.getMejl() + "\n";
 	            		}
 	            	}
 	            	if(status == "") {
@@ -191,7 +191,7 @@ public class Ui implements ItemListener{
 	            } else if(sokfn.isEmpty() && soken.isEmpty() && !soktel.isEmpty() && sokmejl.isEmpty()) {
 	            	for (Person p: kb.KontaktLista) {
 	            		if(soktel.equalsIgnoreCase(p.getTel())) {
-	            			status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
+	            			status += p.getFnamn() + " " + p.getEnamn() + " " + p.getTel() + " " + p.getMejl() + "\n";
 	            		}
 	            	}
 	            	if(status == "") {
@@ -206,7 +206,7 @@ public class Ui implements ItemListener{
 		        } else if(sokfn.isEmpty() && soken.isEmpty() && soktel.isEmpty() && !sokmejl.isEmpty()) {
 	            	for (Person p: kb.KontaktLista) {
 	            		if(sokmejl.equalsIgnoreCase(p.getMejl())) {
-	            			status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
+	            			status += p.getFnamn() + " " + p.getEnamn() + " " + p.getTel() + " " + p.getMejl() + "\n";
 	            		}
 	            	}
 	            	if(status == "") {
@@ -221,7 +221,7 @@ public class Ui implements ItemListener{
 	            }else if (!sokfn.isEmpty() && !soken.isEmpty() && soktel.isEmpty() && sokmejl.isEmpty())	{
 	            	for (Person p: kb.KontaktLista) {
 	            		if(sokfn.equalsIgnoreCase(p.getFnamn()) && soken.equalsIgnoreCase(p.getEnamn())) {
-	            			status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
+	            			status += p.getFnamn() + " " + p.getEnamn() + " " + p.getTel() + " " + p.getMejl() + "\n";
 	            		}
 	            	}
 	            	if(status == "") {
@@ -236,7 +236,7 @@ public class Ui implements ItemListener{
 	            } else if (!sokfn.isEmpty() && soken.isEmpty() && !soktel.isEmpty() && sokmejl.isEmpty())	{
 	            	for (Person p: kb.KontaktLista) {
 	            		if(sokfn.equalsIgnoreCase(p.getFnamn()) && soktel.equalsIgnoreCase(p.getTel())) {
-	            			status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
+	            			status += p.getFnamn() + " " + p.getEnamn() + " " + p.getTel() + " " + p.getMejl() + "\n";
 	            		}
 	            	}
 	            	if(status == "") {
@@ -251,7 +251,7 @@ public class Ui implements ItemListener{
 	            } else if (!sokfn.isEmpty() && soken.isEmpty() && soktel.isEmpty() && !sokmejl.isEmpty())	{
 	            	for (Person p: kb.KontaktLista) {
 	            		if(sokfn.equalsIgnoreCase(p.getFnamn()) && sokmejl.equalsIgnoreCase(p.getMejl())) {
-	            			status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
+	            			status += p.getFnamn() + " " + p.getEnamn() + " " + p.getTel() + " " + p.getMejl() + "\n";
 	            		}
 	            	}
 	            	if(status == "") {
@@ -266,7 +266,7 @@ public class Ui implements ItemListener{
 	            } else if (sokfn.isEmpty() && !soken.isEmpty() && !soktel.isEmpty() && sokmejl.isEmpty())	{
 	            	for (Person p: kb.KontaktLista) {
 	            		if(soken.equalsIgnoreCase(p.getEnamn()) && soktel.equalsIgnoreCase(p.getMejl())) {
-	            			status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
+	            			status += p.getFnamn() + " " + p.getEnamn() + " " + p.getTel() + " " + p.getMejl() + "\n";
 	            		}
 	            	}
 	            	if(status == "") {
@@ -281,7 +281,7 @@ public class Ui implements ItemListener{
 	            } else if (sokfn.isEmpty() && !soken.isEmpty() && soktel.isEmpty() && !sokmejl.isEmpty())	{
 	            	for (Person p: kb.KontaktLista) {
 	            		if(soken.equalsIgnoreCase(p.getEnamn()) && sokmejl.equalsIgnoreCase(p.getMejl())) {
-	            			status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
+	            			status += p.getFnamn() + " " + p.getEnamn() + " " + p.getTel() + " " + p.getMejl() + "\n";
 	            		}
 	            	}
 	            	if(status == "") {
@@ -296,7 +296,7 @@ public class Ui implements ItemListener{
 	            } else if (sokfn.isEmpty() && soken.isEmpty() && !soktel.isEmpty() && !sokmejl.isEmpty())	{
 	            	for (Person p: kb.KontaktLista) {
 	            		if(soktel.equalsIgnoreCase(p.getTel()) && sokmejl.equalsIgnoreCase(p.getMejl())) {
-	            			status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
+	            			status += p.getFnamn() + " " + p.getEnamn() + " " + p.getTel() + " " + p.getMejl() + "\n";
 	            		}
 	            	}
 	            	if(status == "") {
@@ -311,7 +311,7 @@ public class Ui implements ItemListener{
 	            }else if (!sokfn.isEmpty() && !soken.isEmpty() && !soktel.isEmpty() && sokmejl.isEmpty())	{
 	            	for (Person p: kb.KontaktLista) {
 	            		if(sokfn.equalsIgnoreCase(p.getFnamn()) && soken.equalsIgnoreCase(p.getEnamn()) && soktel.equalsIgnoreCase(p.getTel())) {
-	            			status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
+	            			status += p.getFnamn() + " " + p.getEnamn() + " " + p.getTel() + " " + p.getMejl() + "\n";
 	            		}
 	            	}
 	            	if(status == "") {
@@ -326,7 +326,7 @@ public class Ui implements ItemListener{
 	            }else if (!sokfn.isEmpty() && !soken.isEmpty() && soktel.isEmpty() && !sokmejl.isEmpty())	{
 	            	for (Person p: kb.KontaktLista) {
 	            		if(sokfn.equalsIgnoreCase(p.getFnamn()) && soken.equalsIgnoreCase(p.getEnamn()) && sokmejl.equalsIgnoreCase(p.getMejl())) {
-	            			status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
+	            			status += p.getFnamn() + " " + p.getEnamn() + " " + p.getTel() + " " + p.getMejl() + "\n";
 	            		}
 	            	}
 	            	statusLabel.setText(status);
@@ -338,7 +338,7 @@ public class Ui implements ItemListener{
 	            } else if (!sokfn.isEmpty() && soken.isEmpty() && !soktel.isEmpty() && !sokmejl.isEmpty())	{
 	            	for (Person p: kb.KontaktLista) {
 	            		if(sokfn.equalsIgnoreCase(p.getFnamn()) && soktel.equalsIgnoreCase(p.getTel()) && sokmejl.equalsIgnoreCase(p.getMejl())) {
-	            			status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
+	            			status += p.getFnamn() + " " + p.getEnamn() + " " + p.getTel() + " " + p.getMejl() + "\n";
 	            		}
 	            	}
 	            	if(status == "") {
@@ -353,7 +353,7 @@ public class Ui implements ItemListener{
 	            } else if (sokfn.isEmpty() && !soken.isEmpty() && !soktel.isEmpty() && !sokmejl.isEmpty())	{
 	            	for (Person p: kb.KontaktLista) {
 	            		if(soken.equalsIgnoreCase(p.getEnamn()) && soktel.equalsIgnoreCase(p.getTel()) && sokmejl.equalsIgnoreCase(p.getMejl())) {
-	            			status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
+	            			status += p.getFnamn() + " " + p.getEnamn() + " " + p.getTel() + " " + p.getMejl() + "\n";
 	            		}
 	            	}
 	            	if(status == "") {
@@ -368,7 +368,7 @@ public class Ui implements ItemListener{
 	            } else if (!sokfn.isEmpty() && !soken.isEmpty() && !soktel.isEmpty() && !sokmejl.isEmpty())	{
 	            	for (Person p: kb.KontaktLista) {
 	            		if(sokfn.equalsIgnoreCase(p.getFnamn()) && soken.equalsIgnoreCase(p.getEnamn()) && soktel.equalsIgnoreCase(p.getTel()) && sokmejl.equalsIgnoreCase(p.getMejl())) {
-	            			status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
+	            			status += p.getFnamn() + " " + p.getEnamn() + " " + p.getTel() + " " + p.getMejl() + "\n";
 	            		}
 	            	}
 	            	if(status == "") {
