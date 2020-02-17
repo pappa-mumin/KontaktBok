@@ -15,7 +15,7 @@ public class ByggBok {
 	 * @return sträng med kontaktinformation
 	 * @author Louise
 	 */
-	StringBuilder skapaText(ArrayList<Person> lista) {
+	public StringBuilder skapaText(ArrayList<Person> lista) {
 		this.lista = lista;
 		for(int i = 0; i < lista.size(); i++) {
 			sb.append(lista.get(i).getFnamn() + "," + lista.get(i).getEnamn() + "," + 
