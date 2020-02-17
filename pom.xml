@@ -23,7 +23,7 @@
   
   
   <build>
-    <sourceDirectory>src/main</sourceDirectory>
+    <sourceDirectory>src</sourceDirectory>
     <testSourceDirectory>src/test</testSourceDirectory>
     
     <plugins>
