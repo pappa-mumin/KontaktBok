@@ -28,7 +28,6 @@ public class Ui implements ItemListener{
      * Deklarerar instansvariabler, klassvariabler och statiskta variabler
      * @author Linn
      */
-	
 	final static String FORSTPANEL = "---Vad vill du göra?---";
     final static String LISTAPANEL = "Visa Lista";
     final static String SOKPANEL = "Sök i lista";
@@ -159,13 +158,6 @@ public class Ui implements ItemListener{
 	             * @author Linn
 	             */
 	            if(!sokfn.isEmpty() && soken.isEmpty() && soktel.isEmpty() && sokmejl.isEmpty()) {
-//	            	statuslista = kb.sökEfterFörNamn(sokfn);
-//	            	for(Person p : statuslista) {
-//	            		status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
-//	            	}
-//	            	if(status == "") {
-//	            		status += "Du har sökt på en kontakt som inte finns";
-//	            	}
 	            	for (Person p: kb.KontaktLista) {
 	            		if(sokfn.equalsIgnoreCase(p.getFnamn())) {
 	            			status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
@@ -182,13 +174,6 @@ public class Ui implements ItemListener{
 		             * @author Linn
 		             */
 	            } else if(sokfn.isEmpty() && !soken.isEmpty() && soktel.isEmpty() && sokmejl.isEmpty()) {
-//	            	statuslista = kb.sökEfterEfterNamn(soken);
-//	            	for(Person p : statuslista) {
-//	            		status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
-//	            	}
-//	            	if(status == "") {
-//	            		status += "Du har sökt på en kontakt som inte finns";
-//	            	}
 	            	for (Person p: kb.KontaktLista) {
 	            		if(soken.equalsIgnoreCase(p.getEnamn())) {
 	            			status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
@@ -204,13 +189,6 @@ public class Ui implements ItemListener{
 		             * @author Linn
 		             */
 	            } else if(sokfn.isEmpty() && soken.isEmpty() && !soktel.isEmpty() && sokmejl.isEmpty()) {
-//	            	statuslista = kb.sökEfterTelefonNummer(soktel);
-//	            	for(Person p : statuslista) {
-//	            		status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
-//	            	}
-//	            	if(status == "") {
-//	            		status += "Du har sökt på en kontakt som inte finns";
-//	            	}
 	            	for (Person p: kb.KontaktLista) {
 	            		if(soktel.equalsIgnoreCase(p.getTel())) {
 	            			status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
@@ -226,13 +204,6 @@ public class Ui implements ItemListener{
 		             * @author Linn
 		             */
 		        } else if(sokfn.isEmpty() && soken.isEmpty() && soktel.isEmpty() && !sokmejl.isEmpty()) {
-//		          	statuslista = kb.sökEfterMejl(sokmejl);
-//		           	for(Person p : statuslista) {
-//		           		status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
-//	            	}
-//	            	if(status == "") {
-//	            		status += "Du har sökt på en kontakt som inte finns";
-//	            	}
 	            	for (Person p: kb.KontaktLista) {
 	            		if(sokmejl.equalsIgnoreCase(p.getMejl())) {
 	            			status += p.getFnamn() + " " + p.getEnamn() + " " + p.getMejl() + " " + p.getTel() + "\n";
@@ -484,49 +455,68 @@ public class Ui implements ItemListener{
      * @return en JPanel med JLabels och JTextfields, ÄNDRAS??? 
      * @author Linn och Louise
      */
-    public JPanel taBort() {
-    	taBortPanel = new JPanel();
-    	GridLayout gl = new GridLayout(5,1); 
-    	taBortPanel.setLayout(gl);
-    	JButton taBortKnapp = new JButton("Ta bort");
-	    
-		JLabel fornamnLabel = new JLabel("Förnamn: ");
-		JTextField fornamnInput = new JTextField(30);
-		JLabel efternamnLabel = new JLabel("Efternamn: ");
-		JTextField efternamnInput = new JTextField(30);
-	    JLabel telLabel = new JLabel("Telefonnummer: ");
-	    JTextField telInput = new JTextField(30);		    
-	    JLabel mejlLabel = new JLabel("Mejladress: ");
-	    JTextField mejlInput = new JTextField(30);;		    
-	    
-	    fornamnInput.setText("");
-		efternamnInput.setText("");
-	    telInput.setText("");
-	    mejlInput.setText("");
-	    
-	    taBortKnapp.setActionCommand("Ta bort");
-	    
-	    taBortKnapp.addActionListener(new ActionListener() {
-	    	public void actionPerformed(ActionEvent e) {
-	    		bortfn = fornamnInput.getText();		   
-	    		borten = efternamnInput.getText();
-	    		borttel = telInput.getText();
-	            bortmejl = mejlInput.getText();
-	            System.out.println("korv korv korv" + bortfn + borten + borttel + bortmejl);
-	            statusLabel.setText("Kontakt har hittats och tagits bort!");	
-	    	}
-	    });
-	    
-	    taBortPanel.add(fornamnLabel);
-	    taBortPanel.add(fornamnInput);
-	    taBortPanel.add(efternamnLabel);
-	    taBortPanel.add(efternamnInput);
-	    taBortPanel.add(telLabel);
-	    taBortPanel.add(telInput);
-	    taBortPanel.add(mejlLabel);
-	    taBortPanel.add(mejlInput);
-	    taBortPanel.add(taBortKnapp);
-    	return taBortPanel;
+    public JScrollPane taBort() {
+//    	taBortPanel = new JPanel();
+//    	GridLayout gl = new GridLayout(5,1); 
+//    	taBortPanel.setLayout(gl);
+//    	JButton taBortKnapp = new JButton("Ta bort");
+//	    
+//		JLabel fornamnLabel = new JLabel("Förnamn: ");
+//		JTextField fornamnInput = new JTextField(30);
+//		JLabel efternamnLabel = new JLabel("Efternamn: ");
+//		JTextField efternamnInput = new JTextField(30);
+//	    JLabel telLabel = new JLabel("Telefonnummer: ");
+//	    JTextField telInput = new JTextField(30);		    
+//	    JLabel mejlLabel = new JLabel("Mejladress: ");
+//	    JTextField mejlInput = new JTextField(30);;		    
+//	    
+//	    fornamnInput.setText("");
+//		efternamnInput.setText("");
+//	    telInput.setText("");
+//	    mejlInput.setText("");
+//	    
+//	    taBortKnapp.setActionCommand("Ta bort");
+//	    
+//	    taBortKnapp.addActionListener(new ActionListener() {
+//	    	public void actionPerformed(ActionEvent e) {
+//	    		bortfn = fornamnInput.getText();		   
+//	    		borten = efternamnInput.getText();
+//	    		borttel = telInput.getText();
+//	            bortmejl = mejlInput.getText();
+//	            System.out.println("korv korv korv" + bortfn + borten + borttel + bortmejl);
+//	            statusLabel.setText("Kontakt har hittats och tagits bort!");	
+//	    	}
+//	    });
+//	    
+//	    taBortPanel.add(fornamnLabel);
+//	    taBortPanel.add(fornamnInput);
+//	    taBortPanel.add(efternamnLabel);
+//	    taBortPanel.add(efternamnInput);
+//	    taBortPanel.add(telLabel);
+//	    taBortPanel.add(telInput);
+//	    taBortPanel.add(mejlLabel);
+//	    taBortPanel.add(mejlInput);
+//	    taBortPanel.add(taBortKnapp);
+//    	return taBortPanel;
+    	ArrayList<String> listlista = new ArrayList<String>();
+    	String s = "";
+    	for(Person p : kb.KontaktLista) {
+    		s = "";
+    		s += bb.pad(p.getFnamn(), 25, ' ');
+    		s += bb.pad(p.getEnamn(), 20, ' ');
+    		s += bb.pad(p.getTel(), 25, ' ');
+    		s += bb.pad(p.getMejl(), 15, ' ');
+    		
+    		listlista.add(s);
+    		listlista.sort(null);
+    		System.out.println(s);
+    	}
+
+		JList<String> list = new JList(listlista.toArray());
+		list.setLayoutOrientation(JList.VERTICAL);
+		scrollPane = new JScrollPane(list);
+
+    	return scrollPane;
     }
     
     /**
