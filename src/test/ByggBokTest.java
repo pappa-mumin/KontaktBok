@@ -29,7 +29,7 @@ class ByggBokTest {
 	void skapaTextTest() {
 		String sb = bb.skapaText(lista).toString();
 		String str = lista.get(0).getFnamn() + "," + lista.get(0).getEnamn() + "," + 
-				lista.get(0).getMejl()+ "," + lista.get(0).getTel() + "\n";
+				lista.get(0).getTel()+ "," + lista.get(0).getMejl() + "\n";
 
 		assertEquals(sb, str);
 	}
